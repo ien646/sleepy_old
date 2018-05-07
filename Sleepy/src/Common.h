@@ -79,17 +79,17 @@ namespace sleepy
 
 		bool operator ==(const OPCODE& o) const
 		{
-			return (o.prefix == this->prefix) && (o.value == this->value);
+			return composeWord(o.prefix, prefix) == composeWord(o.value,value);
 		}
 
 		bool operator <(const OPCODE& o) const
 		{
-			return (o.prefix < this->prefix) && (o.value < this->value);
+			return composeWord(o.prefix, prefix) < composeWord(o.value, value);
 		}
 
 		bool operator >(const OPCODE& o) const
 		{
-			return (o.prefix > this->prefix) && (o.value > this->value);
+			return composeWord(o.prefix, prefix) > composeWord(o.value, value);
 		}
 	};
 }
