@@ -32,6 +32,11 @@ namespace sleepy
 		return (hibyte << 8) | lobyte;
 	}
 
+	constexpr inline WORD readWord(BYTE* addr)
+	{
+		return composeWord(addr[1], addr[0]);
+	}
+
 	constexpr inline bool getBit(BYTE value, BYTE index)
 	{
 		return (value & (1 << index)) == value;
@@ -70,6 +75,21 @@ namespace sleepy
 		WORD get()
 		{
 			return (prefix << 8) | (value);
+		}
+
+		bool operator ==(const OPCODE& o) const
+		{
+			return (o.prefix == this->prefix) && (o.value == this->value);
+		}
+
+		bool operator <(const OPCODE& o) const
+		{
+			return (o.prefix < this->prefix) && (o.value < this->value);
+		}
+
+		bool operator >(const OPCODE& o) const
+		{
+			return (o.prefix > this->prefix) && (o.value > this->value);
 		}
 	};
 }
