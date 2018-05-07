@@ -1,24 +1,25 @@
 #include "CpuFirmware.h"
+#include "Common.h"
+#include "System.h"
 
 namespace sleepy
 {
-	void CpuFirmware::Initialize()
+	void CpuFirmware::Initialize(System* sys)
 	{
-
+		_sys = sys;
+		_mem = &(_sys->Memory);
+		_regs = &(sys->CPU.Registers);
+		InitInstructionMap();
 	}
 
-	void CpuFirmware::NOP()
+	void CpuFirmware::InitInstructionMap()
 	{
-		return;
+		AddInstruction(OPCODE(0x00), "NOP", 4, 0, [&](BYTE* args) { return; });
+		AddInstruction(OPCODE(0x10), "STOP", 4, 1, [&](BYTE* args) { return; });
 	}
 
-	void CpuFirmware::STOP()
+	void CpuFirmware::AddInstruction(OPCODE opc, const std::string & mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call)
 	{
-		return;
-	}
-
-	void CpuFirmware::LD_r8_v8(REG_8BIT& reg, BYTE byte)
-	{
-		reg = byte;
+		InstructionMap.insert(std::make_pair(opc, CpuInstructionDef(opc, mnem, cycc, argl, call)));
 	}
 }

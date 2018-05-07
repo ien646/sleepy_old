@@ -1,10 +1,14 @@
 #include "Cpu.h"
+#include "System.h"
 
 sleepy::Cpu::Cpu()
 {
+
 }
 
-void sleepy::Cpu::Initialize(Memory * mem)
+void sleepy::Cpu::Initialize(System* sys)
 {
-	Firmware.Initialize();
+	_sys = sys;
+	_memory = &(_sys->Memory);	
+	Firmware.Initialize(_sys);
 }

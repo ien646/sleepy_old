@@ -14,10 +14,11 @@ namespace sleepy
 		CpuFirmware Firmware;
 
 		Cpu();
-		void Initialize(Memory* mem);
+		void Initialize(System* sys);
 
 	private:
 		bool _interruptsEnabled;
 		Memory* _memory;
+		System* _sys;
 	};
 }

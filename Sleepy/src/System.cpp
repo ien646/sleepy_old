@@ -2,5 +2,5 @@
 
 sleepy::System::System()
 {
-	CPU.Initialize(&Memory);
+	CPU.Initialize(this);
 }

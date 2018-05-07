@@ -7,15 +7,22 @@
 
 namespace sleepy
 {
+	class System;
+	class Memory;
+	class Registers;
+
 	class CpuFirmware
 	{
 	public:
-		void Initialize();
+		void Initialize(System* sys);
 		std::map<OPCODE, CpuInstructionDef> InstructionMap;
 
 	private:
-		void NOP();
-		void STOP();
-		void LD_r8_v8(REG_8BIT& reg, BYTE byte);
+		System* _sys;
+		Memory* _mem;
+		Registers* _regs;
+
+		void InitInstructionMap();
+		void AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call);
 	};
 }

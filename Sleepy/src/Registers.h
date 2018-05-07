@@ -41,7 +41,9 @@ namespace sleepy
 		WORD readDE();
 		WORD readHL();
 
-		void SetFlag(FLAG flagMask);
-		void ResetFlag(FLAG flagMask);
+		void setFlag(FLAG flagMask);
+		void resetFlag(FLAG flagMask);
+
+		void resetAllFlags();
 	};
 }

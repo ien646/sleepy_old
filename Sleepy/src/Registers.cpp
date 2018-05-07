@@ -46,13 +46,18 @@ namespace sleepy
 		return composeWord(H, L);
 	}
 
-	void Registers::SetFlag(FLAG flagMask)
+	void Registers::setFlag(FLAG flagMask)
 	{
 		F |= (BYTE)flagMask;
 	}
 
-	void Registers::ResetFlag(FLAG flagMask)
+	void Registers::resetFlag(FLAG flagMask)
 	{
 		F &= ((BYTE)flagMask ^ 0xFF);
+	}
+
+	void Registers::resetAllFlags()
+	{
+		F &= 0x00;
 	}
 }
