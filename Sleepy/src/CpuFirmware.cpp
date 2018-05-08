@@ -88,7 +88,7 @@ namespace sleepy
 			REG.A = REG.L;
 		});
 
-		DEF_INST(OPCODE(0x7E), "LD A,(HL)", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0x7E), "LD A,(HL)", 8, 0, [&](BYTE* args)
 		{
 			ADDR addr = (ADDR)REG.ReadHL();
 			REG.A = MEM.ReadByte(addr);
@@ -132,7 +132,7 @@ namespace sleepy
 			REG.B = REG.L;
 		});
 
-		DEF_INST(OPCODE(0x46), "LD B,(HL)", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0x46), "LD B,(HL)", 8, 0, [&](BYTE* args)
 		{
 			ADDR addr = (ADDR)REG.ReadHL();
 			REG.B = MEM.ReadByte(addr);
@@ -176,7 +176,7 @@ namespace sleepy
 			REG.C = REG.L;
 		});
 
-		DEF_INST(OPCODE(0x4E), "LD C,(HL)", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0x4E), "LD C,(HL)", 8, 0, [&](BYTE* args)
 		{
 			ADDR addr = (ADDR)REG.ReadHL();
 			REG.C = MEM.ReadByte(addr);
@@ -220,7 +220,7 @@ namespace sleepy
 			REG.D = REG.L;
 		});
 
-		DEF_INST(OPCODE(0x56), "LD D,(HL)", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0x56), "LD D,(HL)", 8, 0, [&](BYTE* args)
 		{
 			ADDR addr = (ADDR)REG.ReadHL();
 			REG.D = MEM.ReadByte(addr);
@@ -264,7 +264,7 @@ namespace sleepy
 			REG.E = REG.L;
 		});
 
-		DEF_INST(OPCODE(0x5E), "LD E,(HL)", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0x5E), "LD E,(HL)", 8, 0, [&](BYTE* args)
 		{
 			ADDR addr = (ADDR)REG.ReadHL();
 			REG.E = MEM.ReadByte(addr);
@@ -308,7 +308,7 @@ namespace sleepy
 			REG.H = REG.L;
 		});
 
-		DEF_INST(OPCODE(0x66), "LD H,(HL)", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0x66), "LD H,(HL)", 8, 0, [&](BYTE* args)
 		{
 			ADDR addr = (ADDR)REG.ReadHL();
 			REG.H = MEM.ReadByte(addr);
@@ -352,7 +352,7 @@ namespace sleepy
 			REG.H = REG.L;
 		});
 
-		DEF_INST(OPCODE(0x6E), "LD L,(HL)", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0x6E), "LD L,(HL)", 8, 0, [&](BYTE* args)
 		{
 			ADDR addr = (ADDR)REG.ReadHL();
 			REG.H = MEM.ReadByte(addr);
