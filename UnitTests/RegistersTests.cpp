@@ -8,7 +8,7 @@ using namespace sleepy;
 
 namespace UnitTests
 {
-	TEST_CLASS(MemoryTests)
+	TEST_CLASS(RegistersTests)
 	{
 		TEST_METHOD(Set_8Bit_RegisterPair_As16bit_Endianess)
 		{

@@ -32,7 +32,7 @@
     <ClCompile Include="RegistersTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CpuFirmware.cpp">
+    <ClCompile Include="CpuFirmwareTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
