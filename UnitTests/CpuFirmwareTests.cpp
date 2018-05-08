@@ -32,8 +32,6 @@ namespace UnitTests
 			ZeroRegisters(sys);
 			auto& instMap = sys.CPU.Firmware.InstructionMap;
 			auto& regs = sys.CPU.Registers;
-
-			// -- LD RX, A
 			regs.A = 0xCA;
 			CpuInstructionDef ld_a_a = instMap[OPCODE(0x7F)];
 			CpuInstructionDef ld_b_a = instMap[OPCODE(0x47)];
@@ -43,6 +41,7 @@ namespace UnitTests
 			CpuInstructionDef ld_h_a = instMap[OPCODE(0x67)];
 			CpuInstructionDef ld_l_a = instMap[OPCODE(0x6F)];
 
+			// Run
 			ld_a_a.Call(nullptr);
 			ld_b_a.Call(nullptr);
 			ld_c_a.Call(nullptr);
@@ -51,6 +50,7 @@ namespace UnitTests
 			ld_h_a.Call(nullptr);
 			ld_l_a.Call(nullptr);
 
+			// Assert
 			Assert::IsTrue(regs.A == (BYTE)0xCA);
 			Assert::IsTrue(regs.B == (BYTE)0xCA);
 			Assert::IsTrue(regs.C == (BYTE)0xCA);
