@@ -12,3 +12,13 @@ void sleepy::Cpu::Initialize(System* sys)
 	_memory = &(_sys->Memory);	
 	Firmware.Initialize(_sys);
 }
+
+void sleepy::Cpu::EnableInterrupts()
+{
+	_interruptsEnabled = true;
+}
+
+void sleepy::Cpu::DisableInterrupts()
+{
+	_interruptsEnabled = false;
+}

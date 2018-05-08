@@ -12,10 +12,10 @@ namespace sleepy
 	public:
 		Memory();
 
-		void writeByte(ADDR address, BYTE value);
-		void writeWord(ADDR address, WORD value);
-		BYTE readByte(ADDR address);
-		WORD readWord(ADDR address);
+		void WriteByte(ADDR address, BYTE value);
+		void WriteWord(ADDR address, WORD value);
+		BYTE ReadByte(ADDR address);
+		WORD ReadWord(ADDR address);
 
 		/* Return raw pointer to memory address 0x0000 */
 		BYTE* data();

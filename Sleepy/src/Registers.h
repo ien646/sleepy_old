@@ -31,19 +31,19 @@ namespace sleepy
 		REG_16BIT PC;
 		REG_16BIT SP;
 
-		void setAF(WORD value);
-		void setBC(WORD value);
-		void setDE(WORD value);
-		void setHL(WORD value);
+		void SetAF(WORD value);
+		void SetBC(WORD value);
+		void SetDE(WORD value);
+		void SetHL(WORD value);
 
-		WORD readAF();
-		WORD readBC();
-		WORD readDE();
-		WORD readHL();
+		WORD ReadAF();
+		WORD ReadBC();
+		WORD ReadDE();
+		WORD ReadHL();
 
-		void setFlag(FLAG flagMask);
-		void resetFlag(FLAG flagMask);
+		void SetFlag(FLAG flagMask);
+		void ResetFlag(FLAG flagMask);
 
-		void resetAllFlags();
+		void ResetAllFlags();
 	};
 }

@@ -16,10 +16,10 @@ namespace UnitTests
 			Registers r;
 
 			// Run
-			r.setAF(0xFF00);
-			r.setBC(0xEE11);
-			r.setDE(0xDD22);
-			r.setHL(0xCC33);
+			r.SetAF(0xFF00);
+			r.SetBC(0xEE11);
+			r.SetDE(0xDD22);
+			r.SetHL(0xCC33);
 			
 			// Assert
 			Assert::IsTrue(0x00 == r.F);
@@ -49,10 +49,10 @@ namespace UnitTests
 			r.L = 0x33;
 
 			// Run
-			WORD AF = r.readAF();
-			WORD BC = r.readBC();
-			WORD DE = r.readDE();
-			WORD HL = r.readHL();
+			WORD AF = r.ReadAF();
+			WORD BC = r.ReadBC();
+			WORD DE = r.ReadDE();
+			WORD HL = r.ReadHL();
 
 			// Assert
 			Assert::IsTrue((WORD)0xFF00 == AF);

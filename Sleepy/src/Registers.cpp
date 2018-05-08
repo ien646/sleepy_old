@@ -2,61 +2,61 @@
 
 namespace sleepy
 {
-	void Registers::setAF(WORD value)
+	void Registers::SetAF(WORD value)
 	{
 		A = highByte(value);
 		F = lowByte(value);
 	}
 
-	void Registers::setBC(WORD value)
+	void Registers::SetBC(WORD value)
 	{
 		B = highByte(value);
 		C = lowByte(value);
 	}
 
-	void Registers::setDE(WORD value)
+	void Registers::SetDE(WORD value)
 	{
 		D = highByte(value);
 		E = lowByte(value);
 	}
 
-	void Registers::setHL(WORD value)
+	void Registers::SetHL(WORD value)
 	{
 		H = highByte(value);
 		L = lowByte(value);
 	}
 
-	WORD Registers::readAF()
+	WORD Registers::ReadAF()
 	{
 		return composeWord(A, F);
 	}
 
-	WORD Registers::readBC()
+	WORD Registers::ReadBC()
 	{
 		return composeWord(B, C);
 	}
 
-	WORD Registers::readDE()
+	WORD Registers::ReadDE()
 	{
 		return composeWord(D, E);
 	}
 
-	WORD Registers::readHL()
+	WORD Registers::ReadHL()
 	{
 		return composeWord(H, L);
 	}
 
-	void Registers::setFlag(FLAG flagMask)
+	void Registers::SetFlag(FLAG flagMask)
 	{
 		F |= (BYTE)flagMask;
 	}
 
-	void Registers::resetFlag(FLAG flagMask)
+	void Registers::ResetFlag(FLAG flagMask)
 	{
 		F &= ((BYTE)flagMask ^ 0xFF);
 	}
 
-	void Registers::resetAllFlags()
+	void Registers::ResetAllFlags()
 	{
 		F &= 0x00;
 	}

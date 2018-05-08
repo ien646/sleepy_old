@@ -18,7 +18,7 @@ namespace UnitTests
 			BYTE* data = memory.data();
 
 			// Run
-			memory.writeWord((ADDR)0x0000, (WORD)0xF0AE);
+			memory.WriteWord((ADDR)0x0000, (WORD)0xF0AE);
 			
 			// Assert
 			Assert::IsTrue(0xAE == data[0]);
@@ -33,7 +33,7 @@ namespace UnitTests
 			((WORD*)memory.data())[0] = 0xF0AE;
 
 			// Run
-			WORD res = memory.readWord((ADDR)0x0000);
+			WORD res = memory.ReadWord((ADDR)0x0000);
 
 			// Assert
 			Assert::IsTrue(0xAE == data[0]);

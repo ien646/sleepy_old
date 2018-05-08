@@ -15,6 +15,8 @@ namespace sleepy
 
 		Cpu();
 		void Initialize(System* sys);
+		void EnableInterrupts();
+		void DisableInterrupts();
 
 	private:
 		bool _interruptsEnabled;
