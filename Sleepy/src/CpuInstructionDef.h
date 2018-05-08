@@ -30,6 +30,8 @@ namespace sleepy
 		// Instruction call
 		OP_CALL Call;
 
+		CpuInstructionDef() {};
+
 		CpuInstructionDef(OPCODE opc, const std::string mnem, BYTE cycc, BYTE argsLen, OP_CALL opCall);
 	};
 }

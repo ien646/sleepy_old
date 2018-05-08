@@ -13,5 +13,6 @@ namespace sleepy
 		Cpu CPU;
 
 		System();
+		void Initialize();
 	};
 }
