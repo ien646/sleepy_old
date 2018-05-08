@@ -22,6 +22,14 @@ namespace sleepy
 	void CpuFirmware::InitInstructionMap()
 	{
 		InitMap_Misc();
+
+		InitMap_LD_A_X();
+		InitMap_LD_B_X();
+		InitMap_LD_C_X();
+		InitMap_LD_D_X();
+		InitMap_LD_E_X();
+		InitMap_LD_H_X();
+		InitMap_LD_L_X();
 	}
 
 	void CpuFirmware::InitMap_Misc()
@@ -31,23 +39,23 @@ namespace sleepy
 			RETURN_NOREF;
 		});
 
-		DEF_INST(OPCODE(0x00), "STOP", 4, 1, [&](BYTE* args)
+		DEF_INST(OPCODE(0x10), "STOP", 4, 1, [&](BYTE* args)
 		{
 			RETURN_NOREF;
 		});
 
-		DEF_INST(OPCODE(0x00), "HALT", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0x76), "HALT", 4, 0, [&](BYTE* args)
 		{
 			RETURN_NOREF;
 		});
 
-		DEF_INST(OPCODE(0x00), "DI", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0xF3), "DI", 4, 0, [&](BYTE* args)
 		{
 			CPU.DisableInterrupts();
 			RETURN_NOREF;
 		});
 
-		DEF_INST(OPCODE(0x00), "EI", 4, 0, [&](BYTE* args)
+		DEF_INST(OPCODE(0xFB), "EI", 4, 0, [&](BYTE* args)
 		{
 			CPU.EnableInterrupts();
 			RETURN_NOREF;
@@ -370,50 +378,50 @@ namespace sleepy
 	{
 		DEF_INST(OPCODE(0x6F), "LD L,A", 4, 0, [&](BYTE* args)
 		{
-			REG.H = REG.A;
+			REG.L = REG.A;
 			RETURN_NOREF;
 		});
 
 		DEF_INST(OPCODE(0x68), "LD L,B", 4, 0, [&](BYTE* args)
 		{
-			REG.H = REG.B;
+			REG.L = REG.B;
 			RETURN_NOREF;
 		});
 
 		DEF_INST(OPCODE(0x69), "LD L,C", 4, 0, [&](BYTE* args)
 		{
-			REG.H = REG.C;
+			REG.L = REG.C;
 			RETURN_NOREF;
 		});
 
 		DEF_INST(OPCODE(0x6A), "LD L,D", 4, 0, [&](BYTE* args)
 		{
-			REG.H = REG.D;
+			REG.L = REG.D;
 			RETURN_NOREF;
 		});
 
 		DEF_INST(OPCODE(0x6B), "LD L,E", 4, 0, [&](BYTE* args)
 		{
-			REG.H = REG.E;
+			REG.L = REG.E;
 			RETURN_NOREF;
 		});
 
 		DEF_INST(OPCODE(0x6C), "LD L,H", 4, 0, [&](BYTE* args)
 		{
-			REG.H = REG.H;
+			REG.L = REG.H;
 			RETURN_NOREF;
 		});
 
 		DEF_INST(OPCODE(0x6D), "LD L,L", 4, 0, [&](BYTE* args)
 		{
-			REG.H = REG.L;
+			REG.L = REG.L;
 			RETURN_NOREF;
 		});
 
 		DEF_INST(OPCODE(0x6E), "LD L,(HL)", 8, 0, [&](BYTE* args)
 		{
 			ADDR addr = (ADDR)REG.ReadHL();
-			REG.H = MEM.ReadByte(addr);
+			REG.L = MEM.ReadByte(addr);
 			RETURN_NOREF;
 		});
 	}
