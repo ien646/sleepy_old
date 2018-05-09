@@ -289,7 +289,6 @@ namespace UnitTests
 			sys.Initialize();
 			ZeroRegisters(sys);
 			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
 			auto& mem = sys.Memory;
 
 			ADDR addr_a = 0x0220;
