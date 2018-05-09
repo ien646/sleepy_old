@@ -15,24 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MemoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RegistersTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CpuFirmwareTests.cpp">
+    <ClCompile Include="CpuFirmware\CpuFirmware_LD_R8_V8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
