@@ -3,7 +3,6 @@
 #include "System.h"
 
 #define DEF_INST(opc,mnem,cycc,argbl,call) (AddInstruction(opc,mnem,cycc,argbl,call))
-#define CF_LAMB [&](BYTE* args) 
 
 #define SYS _sys
 #define MEM _sys->Memory
