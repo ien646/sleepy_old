@@ -29,6 +29,7 @@ namespace sleepy
 		void InitMap_LD_E_X();
 		void InitMap_LD_H_X();
 		void InitMap_LD_L_X();
+		void InitMap_LD_pHL_X();
 
 		void AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call);
 	};

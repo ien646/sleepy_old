@@ -30,6 +30,7 @@ namespace sleepy
 		InitMap_LD_E_X();
 		InitMap_LD_H_X();
 		InitMap_LD_L_X();
+		InitMap_LD_pHL_X();
 	}
 
 	void CpuFirmware::InitMap_Misc()
@@ -422,6 +423,51 @@ namespace sleepy
 		{
 			ADDR addr = (ADDR)REG.ReadHL();
 			REG.L = MEM.ReadByte(addr);
+			RETURN_NOREF;
+		});
+	}
+
+	void CpuFirmware::InitMap_LD_pHL_X()
+	{
+		DEF_INST(OPCODE(0x77), "LD (HL),A", 8, 0, [&](BYTE* args)
+		{
+			MEM.WriteByte(REG.ReadHL(), REG.A);
+			RETURN_NOREF;
+		});
+
+		DEF_INST(OPCODE(0x70), "LD (HL),B", 8, 0, [&](BYTE* args)
+		{
+			MEM.WriteByte(REG.ReadHL(), REG.B);
+			RETURN_NOREF;
+		});
+
+		DEF_INST(OPCODE(0x71), "LD (HL),C", 8, 0, [&](BYTE* args)
+		{
+			MEM.WriteByte(REG.ReadHL(), REG.C);
+			RETURN_NOREF;
+		});
+
+		DEF_INST(OPCODE(0x72), "LD (HL),D", 8, 0, [&](BYTE* args)
+		{
+			MEM.WriteByte(REG.ReadHL(), REG.D);
+			RETURN_NOREF;
+		});
+
+		DEF_INST(OPCODE(0x73), "LD (HL),E", 8, 0, [&](BYTE* args)
+		{
+			MEM.WriteByte(REG.ReadHL(), REG.E);
+			RETURN_NOREF;
+		});
+
+		DEF_INST(OPCODE(0x74), "LD (HL),H", 8, 0, [&](BYTE* args)
+		{
+			MEM.WriteByte(REG.ReadHL(), REG.H);
+			RETURN_NOREF;
+		});
+
+		DEF_INST(OPCODE(0x75), "LD (HL),L", 8, 0, [&](BYTE* args)
+		{
+			MEM.WriteByte(REG.ReadHL(), REG.L);
 			RETURN_NOREF;
 		});
 	}
