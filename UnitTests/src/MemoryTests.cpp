@@ -9,7 +9,7 @@ namespace UnitTests
 {		
 	TEST_CLASS(MemoryTests)
 	{
-	public:		
+	public:
 		TEST_METHOD(WriteWord_CorrectEndianess)
 		{
 			// Setup
@@ -39,6 +39,28 @@ namespace UnitTests
 			Assert::IsTrue(0xF0 == data[1]);
 
 			Assert::IsTrue(0xF0AE == res);
+		}
+
+		TEST_METHOD(Write_Read_Byte_CorrectAddr)
+		{
+			// Setup
+			Memory memory;
+			memory.WriteByte(0xFA0F, 0xAD);
+			memory.WriteByte(0xAA0A, 0xB7);
+
+			Assert::IsTrue(0xAD == memory.ReadByte(0xFA0F));
+			Assert::IsTrue(0xB7 == memory.ReadByte(0xAA0A));
+		}
+
+		TEST_METHOD(Write_Read_Word_CorrectAddr)
+		{
+			// Setup
+			Memory memory;
+			memory.WriteWord(0xFA0F, 0xADAD);
+			memory.WriteWord(0xAA0A, 0xB7B7);
+
+			Assert::IsTrue(0xADAD == memory.ReadWord(0xFA0F));
+			Assert::IsTrue(0xB7B7 == memory.ReadWord(0xAA0A));
 		}
 	};
 }
