@@ -159,9 +159,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CpuFirmware\CpuFirmware_LD_R8_V8.cpp" />
-    <ClCompile Include="RegistersTests.cpp" />
-    <ClCompile Include="MemoryTests.cpp" />
+    <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_pHL_R8.cpp" />
+    <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_R8_V8.cpp" />
+    <ClCompile Include="src\RegistersTests.cpp" />
+    <ClCompile Include="src\MemoryTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sleepy\Sleepy.vcxproj">

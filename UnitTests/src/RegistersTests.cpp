@@ -133,5 +133,21 @@ namespace UnitTests
 			r.ResetFlag(Registers::FLAG::ZERO);
 			Assert::IsTrue(0b01111111 == r.F);
 		}
+
+		TEST_METHOD(Write_Read_Mantain_Order)
+		{
+			Registers r;
+
+			r.SetAF(0xAF);
+			r.SetBC(0xBC);
+			r.SetDE(0xDE);
+			r.SetHL(0x99);
+
+			Assert::IsTrue(0xAF == r.ReadAF());
+			Assert::IsTrue(0xBC == r.ReadBC());
+			Assert::IsTrue(0xDE == r.ReadDE());
+			Assert::IsTrue(0x99 == r.ReadHL());
+
+		}
 	};
 }

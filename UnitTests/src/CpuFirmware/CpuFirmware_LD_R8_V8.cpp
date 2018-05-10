@@ -8,7 +8,7 @@ using namespace sleepy;
 
 namespace UnitTests
 {
-	TEST_CLASS(CpuFirmwareTests)
+	TEST_CLASS(CpuFirmwareTests_LD_R8_V8)
 	{
 	public:
 		void ZeroRegisters(System& sys)

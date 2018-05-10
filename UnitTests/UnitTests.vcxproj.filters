@@ -15,13 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MemoryTests.cpp">
+    <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_R8_V8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RegistersTests.cpp">
+    <ClCompile Include="src\RegistersTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CpuFirmware\CpuFirmware_LD_R8_V8.cpp">
+    <ClCompile Include="src\MemoryTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_pHL_R8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
