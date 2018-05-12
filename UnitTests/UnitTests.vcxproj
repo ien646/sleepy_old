@@ -89,7 +89,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;C:\Users\Ien\source\repos\Sleepy\Sleepy\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -98,6 +98,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <BrowseInformation>true</BrowseInformation>
       <RemoveUnreferencedCodeData>false</RemoveUnreferencedCodeData>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -164,11 +165,15 @@
     <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_R8_V8.cpp" />
     <ClCompile Include="src\RegistersTests.cpp" />
     <ClCompile Include="src\MemoryTests.cpp" />
+    <ClCompile Include="src\stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sleepy\Sleepy.vcxproj">
       <Project>{1066079e-aeb5-4159-87bf-3ba263c5219a}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
