@@ -16,21 +16,21 @@ namespace sleepy
 		typedef std::function<void(BYTE*)> OP_CALL;
 
 		// Cpu instruction memory-ordered opcode
-		OPCODE Opcode;
+		OPCODE Opcode = OPCODE(0xFF, 0x00);
 
 		// Instruction textual representation
-		std::string Mnemonic;
+		std::string Mnemonic = "Uninitialized Mnemonic";
 
 		// Execution time in cycles
-		BYTE Cycles;
+		BYTE Cycles = 0xFF;
 
 		// Arguments length in bytes
-		BYTE ArgsLen;
+		BYTE ArgsLen = 0;
 
 		// Instruction call
-		OP_CALL Call;
+		OP_CALL Call = nullptr;
 
-		CpuInstructionDef() {};
+		CpuInstructionDef() noexcept {};
 
 		CpuInstructionDef(OPCODE opc, const std::string mnem, BYTE cycc, BYTE argsLen, OP_CALL opCall);
 	};

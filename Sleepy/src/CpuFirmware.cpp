@@ -531,7 +531,9 @@ namespace sleepy
 
 	void CpuFirmware::AddInstruction(OPCODE opc, const std::string & mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call)
 	{
-		InstructionMap.insert(std::make_pair(opc, CpuInstructionDef(opc, mnem, cycc, argl, call)));
+		CpuInstructionDef inst(opc, mnem, cycc, argl, call);
+		auto pair = std::make_pair(opc, inst);
+		auto trash = InstructionMap.insert(pair);
 	}
 
 	void CpuFirmware::Opcode_ADD_A_V8(BYTE v8)

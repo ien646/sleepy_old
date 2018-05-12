@@ -52,8 +52,6 @@ namespace sleepy
 		BYTE prefix;
 		BYTE value;
 
-		OPCODE() { }
-
 		OPCODE(BYTE val)
 		{
 			prefix = 0x00;

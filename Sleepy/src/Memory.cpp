@@ -2,7 +2,7 @@
 
 namespace sleepy
 {
-	Memory::Memory()
+	Memory::Memory() noexcept
 	{
 		_memory = std::unique_ptr<BYTE[]>(new BYTE[TOTAL_MEM_SZ]);
 	}

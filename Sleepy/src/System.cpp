@@ -1,6 +1,6 @@
 #include "System.h"
 
-sleepy::System::System()
+sleepy::System::System() noexcept
 {
 	CPU.Initialize(this);
 }

@@ -1,9 +1,9 @@
 #include "Cpu.h"
 #include "System.h"
 
-sleepy::Cpu::Cpu()
+sleepy::Cpu::Cpu() noexcept
 {
-
+	this->Registers.ZeroRegisters();
 }
 
 void sleepy::Cpu::Initialize(System* sys)

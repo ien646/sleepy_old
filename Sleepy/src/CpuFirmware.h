@@ -16,7 +16,7 @@ namespace sleepy
 		std::map<OPCODE, CpuInstructionDef> InstructionMap;
 
 	private:
-		System* _sys;
+		System* _sys = nullptr;
 
 		void InitInstructionMap();
 

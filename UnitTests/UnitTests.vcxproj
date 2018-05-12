@@ -77,6 +77,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -110,12 +111,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>C:\Users\Ien\source\repos\Sleepy\Sleepy\src;$(VCInstallDir)UnitTest\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <UseFullPaths>true</UseFullPaths>
+      <PrecompiledHeaderFile>stdafx_test.h</PrecompiledHeaderFile>
+      <ForcedIncludeFiles>stdafx_test.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -160,12 +163,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\CpuFirmware\CpuFirmware_ADD_A_V8.cpp" />
-    <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_pHL_R8.cpp" />
-    <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_R8_V8.cpp" />
+    <ClCompile Include="src\CpuFirmware_ADD_A_V8.cpp" />
+    <ClCompile Include="src\CpuFirmware_LD_pHL_R8.cpp" />
+    <ClCompile Include="src\CpuFirmware_LD_R8_V8.cpp" />
     <ClCompile Include="src\RegistersTests.cpp" />
     <ClCompile Include="src\MemoryTests.cpp" />
-    <ClCompile Include="src\stdafx.cpp" />
+    <ClCompile Include="src\stdafx_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sleepy\Sleepy.vcxproj">
@@ -173,7 +176,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\stdafx.h" />
+    <ClInclude Include="src\stdafx_test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

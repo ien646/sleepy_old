@@ -13,14 +13,14 @@ namespace sleepy
 		Registers Registers;
 		CpuFirmware Firmware;
 
-		Cpu();
+		Cpu() noexcept;
 		void Initialize(System* sys);
 		void EnableInterrupts();
 		void DisableInterrupts();		
 
 	private:
-		bool _interruptsEnabled;
-		Memory* _memory;
-		System* _sys;
+		bool _interruptsEnabled = false;
+		Memory* _memory = nullptr;
+		System* _sys = nullptr;
 	};
 }

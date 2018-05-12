@@ -10,7 +10,7 @@ namespace sleepy
 	class Memory
 	{
 	public:
-		Memory();
+		Memory() noexcept;
 
 		void WriteByte(ADDR address, BYTE value);
 		void WriteWord(ADDR address, WORD value);

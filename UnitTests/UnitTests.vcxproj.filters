@@ -15,27 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_R8_V8.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\RegistersTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\MemoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_pHL_R8.cpp">
+    <ClCompile Include="src\stdafx_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\CpuFirmware\CpuFirmware_ADD_A_V8.cpp">
+    <ClCompile Include="src\CpuFirmware_ADD_A_V8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\stdafx.cpp">
+    <ClCompile Include="src\CpuFirmware_LD_pHL_R8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CpuFirmware_LD_R8_V8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\stdafx.h">
+    <ClInclude Include="src\stdafx_test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

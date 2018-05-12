@@ -12,7 +12,7 @@ namespace sleepy
 		Memory Memory;
 		Cpu CPU;
 
-		System();
+		System() noexcept;
 		void Initialize();
 	};
 }

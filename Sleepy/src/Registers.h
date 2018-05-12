@@ -7,6 +7,8 @@ namespace sleepy
 	class Registers
 	{
 	public:
+		Registers() noexcept {}
+
 		enum class FLAG : BYTE
 		{
 			ZERO	= 1 << 7,
@@ -19,17 +21,17 @@ namespace sleepy
 			NULL_0	= 1 << 0,
 		};
 
-		REG_8BIT A;
-		REG_8BIT F;
-		REG_8BIT B;
-		REG_8BIT C;
-		REG_8BIT D;
-		REG_8BIT E;
-		REG_8BIT H;
-		REG_8BIT L;
+		REG_8BIT A = 0x00;
+		REG_8BIT F = 0x00;
+		REG_8BIT B = 0x00;
+		REG_8BIT C = 0x00;
+		REG_8BIT D = 0x00;
+		REG_8BIT E = 0x00;
+		REG_8BIT H = 0x00;
+		REG_8BIT L = 0x00;
 
-		REG_16BIT PC;
-		REG_16BIT SP;
+		REG_16BIT PC = 0x0000;
+		REG_16BIT SP = 0x0000;
 
 		void SetAF(WORD value);
 		void SetBC(WORD value);
