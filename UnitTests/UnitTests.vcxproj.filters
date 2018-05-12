@@ -33,6 +33,9 @@
     <ClCompile Include="src\CpuFirmware_LD_R8_V8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CpuFirmware_SUB_A_V8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx_test.h">
