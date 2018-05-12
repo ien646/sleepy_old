@@ -598,7 +598,8 @@ namespace sleepy
 		{
 			REG.SetFlag(FLAG_ZERO);
 		}
-		else if (result > 0xFF)
+
+		if (result > 0xFF)
 		{
 			REG.SetFlag(FLAG_CARRY);
 			REG.SetFlag(FLAG_HCARRY);
@@ -607,6 +608,7 @@ namespace sleepy
 		{
 			REG.SetFlag(FLAG_HCARRY);
 		}
+
 		REG.A = (BYTE)result;
 	}
 
