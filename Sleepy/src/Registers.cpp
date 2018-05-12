@@ -56,8 +56,31 @@ namespace sleepy
 		F &= ((BYTE)flagMask ^ 0xFF);
 	}
 
+	bool Registers::ReadFlag(FLAG flagMask)
+	{
+		return ((BYTE)flagMask | F) == F;
+	}
+
 	void Registers::ResetAllFlags()
 	{
 		F &= 0x00;
+	}
+
+	void Registers::ZeroRegisters(bool zero_PC_SP)
+	{
+		A &= 0x00;
+		F &= 0x00;
+		B &= 0x00;
+		C &= 0x00;
+		D &= 0x00;
+		E &= 0x00;
+		H &= 0x00;
+		L &= 0x00;
+
+		if (zero_PC_SP)
+		{
+			PC = 0x0000;
+			SP = 0x0000;
+		}
 	}
 }

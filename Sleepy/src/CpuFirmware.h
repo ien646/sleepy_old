@@ -22,15 +22,19 @@ namespace sleepy
 
 		void InitMap_Misc();
 
-		void InitMap_LD_A_X();
-		void InitMap_LD_B_X();
-		void InitMap_LD_C_X();
-		void InitMap_LD_D_X();
-		void InitMap_LD_E_X();
-		void InitMap_LD_H_X();
-		void InitMap_LD_L_X();
-		void InitMap_LD_pHL_X();
+		void InitMap_LD_A_X8();
+		void InitMap_LD_B_X8();
+		void InitMap_LD_C_X8();
+		void InitMap_LD_D_X8();
+		void InitMap_LD_E_X8();
+		void InitMap_LD_H_X8();
+		void InitMap_LD_L_X8();
+		void InitMap_LD_pHL_X8();
+
+		void InitMap_ADD_A_X8();
 
 		void AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call);
+
+		void Opcode_ADD_A_V8(BYTE v8);
 	};
 }

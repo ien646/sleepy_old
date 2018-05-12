@@ -5,7 +5,7 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
 
-namespace UnitTests
+namespace sleepy
 {
 	TEST_CLASS(RegistersTests)
 	{
@@ -85,7 +85,7 @@ namespace UnitTests
 			Assert::IsTrue(0b00010000 == r.F);
 
 			r.F = 0x00;
-			r.SetFlag(Registers::FLAG::HCARRY);
+			r.SetFlag(Registers::FLAG::HALF_CARRY);
 			Assert::IsTrue(0b00100000 == r.F);
 
 			r.F = 0x00;
@@ -122,7 +122,7 @@ namespace UnitTests
 			Assert::IsTrue(0b11101111 == r.F);
 
 			r.F = 0xFF;
-			r.ResetFlag(Registers::FLAG::HCARRY);
+			r.ResetFlag(Registers::FLAG::HALF_CARRY);
 			Assert::IsTrue(0b11011111 == r.F);
 
 			r.F = 0xFF;

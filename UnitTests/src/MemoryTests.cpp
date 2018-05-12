@@ -5,7 +5,7 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
 
-namespace UnitTests
+namespace sleepy
 {		
 	TEST_CLASS(MemoryTests)
 	{

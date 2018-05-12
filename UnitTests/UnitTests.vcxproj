@@ -159,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\CpuFirmware\CpuFirmware_ADD_A_V8.cpp" />
     <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_pHL_R8.cpp" />
     <ClCompile Include="src\CpuFirmware\CpuFirmware_LD_R8_V8.cpp" />
     <ClCompile Include="src\RegistersTests.cpp" />

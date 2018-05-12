@@ -11,7 +11,7 @@ namespace sleepy
 		{
 			ZERO	= 1 << 7,
 			SUB		= 1 << 6,
-			HCARRY	= 1 << 5,
+			HALF_CARRY	= 1 << 5,
 			CARRY	= 1 << 4,
 			NULL_3	= 1 << 3,
 			NULL_2	= 1 << 2,
@@ -44,6 +44,10 @@ namespace sleepy
 		void SetFlag(FLAG flagMask);
 		void ResetFlag(FLAG flagMask);
 
+		bool ReadFlag(FLAG flagMask);
+
 		void ResetAllFlags();
+
+		void ZeroRegisters(bool zero_PC_SP = false);
 	};
 }
