@@ -202,6 +202,16 @@ namespace sleepy
 			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
 			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+
+			// 255 + 1 == 0, sets halfcarry, carry, and zero
+			regs.ResetAllFlags();
+			regs.A = 0xFF;
+			regs.B = 0x01;
+			add_a_b.Call(nullptr);
+			Assert::IsTrue(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
 		}
 	};
 }
