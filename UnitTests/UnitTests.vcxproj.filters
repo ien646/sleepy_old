@@ -48,6 +48,9 @@
     <ClCompile Include="src\CpuFirmware_OR_A_V8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CpuFirmware_XOR_A_V8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx_test.h">
