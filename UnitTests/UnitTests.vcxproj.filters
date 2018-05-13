@@ -42,6 +42,9 @@
     <ClCompile Include="src\CpuFirmware_SBC_A_V8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CpuFirmware_AND_A_V8.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx_test.h">
