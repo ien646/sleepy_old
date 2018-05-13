@@ -42,6 +42,7 @@ namespace sleepy
 		InitMap_SBC_A_X8();
 
 		InitMap_AND_A_X8();
+		InitMap_OR_A_X8();
 	}
 
 	void CpuFirmware::InitMap_Misc()
@@ -738,6 +739,57 @@ namespace sleepy
 		});
 	}
 
+	void CpuFirmware::InitMap_OR_A_X8()
+	{
+		DEF_INST(0xB7, "OR A,A", 4, 0, [&](BYTE* args)
+		{
+			Opcode_OR_A_V8(REG.A);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0xB0, "OR A,B", 4, 0, [&](BYTE* args)
+		{
+			Opcode_OR_A_V8(REG.B);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0xB1, "OR A,C", 4, 0, [&](BYTE* args)
+		{
+			Opcode_OR_A_V8(REG.C);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0xB2, "OR A,D", 4, 0, [&](BYTE* args)
+		{
+			Opcode_OR_A_V8(REG.D);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0xB3, "OR A,E", 4, 0, [&](BYTE* args)
+		{
+			Opcode_OR_A_V8(REG.E);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0xB4, "OR A,H", 4, 0, [&](BYTE* args)
+		{
+			Opcode_OR_A_V8(REG.H);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0xB5, "OR A,L", 4, 0, [&](BYTE* args)
+		{
+			Opcode_OR_A_V8(REG.L);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0xB6, "OR A,(HL)", 8, 0, [&](BYTE* args)
+		{
+			Opcode_OR_A_V8(MEM.ReadByte(REG.ReadHL()));
+			RET_NO_ARGS_REF;
+		});
+	}
+
 	void CpuFirmware::AddInstruction(OPCODE opc, const std::string & mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call)
 	{
 		CpuInstructionDef inst(opc, mnem, cycc, argl, call);
@@ -848,6 +900,20 @@ namespace sleepy
 		REG.SetFlag(FLAG_SUB);
 
 		BYTE result = (REG.A & v8);
+
+		if (result == 0x00)
+		{
+			REG.SetFlag(FLAG_ZERO);
+		}
+
+		REG.A = result;
+	}
+
+	void CpuFirmware::Opcode_OR_A_V8(BYTE v8)
+	{
+		REG.ResetAllFlags();
+
+		BYTE result = (REG.A | v8);
 
 		if (result == 0x00)
 		{
