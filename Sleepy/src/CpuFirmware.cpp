@@ -608,7 +608,7 @@ namespace sleepy
 			RET_NO_ARGS_REF;
 		});
 
-		DEF_INST(0x8B, "ADD A,E", 4, 0, [&](BYTE* args)
+		DEF_INST(0x8B, "ADC A,E", 4, 0, [&](BYTE* args)
 		{
 			Opcode_ADC_A_V8(REG.E);
 			RET_NO_ARGS_REF;
