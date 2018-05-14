@@ -8,7 +8,7 @@ using namespace sleepy;
 
 namespace sleepy
 {
-	TEST_CLASS(CpuFirmwareTests_LD_pHL_R8)
+	TEST_CLASS(CpuFirmware_LD_pHL_R8)
 	{
 	public:
 
