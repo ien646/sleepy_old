@@ -888,7 +888,7 @@ namespace sleepy
 			RET_NO_ARGS_REF;
 		});
 
-		DEF_INST(0x24, "INC (HL)", 4, 0, [&](BYTE* args)
+		DEF_INST(0x24, "INC (HL)", 12, 0, [&](BYTE* args)
 		{
 			ADDR addr = REG.ReadHL();
 			BYTE val = MEM.ReadByte(addr);
