@@ -46,6 +46,7 @@ namespace sleepy
 		InitMap_XOR_A_X8();
 
 		InitMap_INC_R8();
+		InitMap_DEC_R8();
 	}
 
 	void CpuFirmware::InitMap_Misc()
@@ -897,6 +898,59 @@ namespace sleepy
 		});
 	}
 
+	void CpuFirmware::InitMap_DEC_R8()
+	{
+		DEF_INST(0x3D, "DEC A", 4, 0, [&](BYTE* args)
+		{
+			Opcode_DEC_R8(REG.A);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0x05, "DEC B", 4, 0, [&](BYTE* args)
+		{
+			Opcode_DEC_R8(REG.B);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0x0D, "DEC C", 4, 0, [&](BYTE* args)
+		{
+			Opcode_DEC_R8(REG.C);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0x15, "DEC D", 4, 0, [&](BYTE* args)
+		{
+			Opcode_DEC_R8(REG.D);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0x1D, "DEC E", 4, 0, [&](BYTE* args)
+		{
+			Opcode_DEC_R8(REG.E);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0x25, "DEC H", 4, 0, [&](BYTE* args)
+		{
+			Opcode_DEC_R8(REG.H);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0x2D, "DEC L", 4, 0, [&](BYTE* args)
+		{
+			Opcode_DEC_R8(REG.E);
+			RET_NO_ARGS_REF;
+		});
+
+		DEF_INST(0x35, "DEC (HL)", 12, 0, [&](BYTE* args)
+		{
+			ADDR addr = REG.ReadHL();
+			BYTE val = MEM.ReadByte(addr);
+			Opcode_DEC_R8(val);
+			MEM.WriteByte(addr, val);
+		});
+	}
+
 	void CpuFirmware::AddInstruction(OPCODE opc, const std::string & mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call)
 	{
 		CpuInstructionDef inst(opc, mnem, cycc, argl, call);
@@ -1049,7 +1103,27 @@ namespace sleepy
 		REG.ResetFlag(FLAG_ZERO);
 		REG.ResetFlag(FLAG_HCARRY);
 		REG.ResetFlag(FLAG_SUB);
+
 		++reg;
+
+		if (reg == 0x00)
+		{
+			REG.SetFlag(FLAG_ZERO);
+		}
+
+		if (reg > 0x0F)
+		{
+			REG.SetFlag(FLAG_HCARRY);
+		}
+	}
+
+	void CpuFirmware::Opcode_DEC_R8(REG_8BIT& reg)
+	{
+		REG.ResetFlag(FLAG_ZERO);
+		REG.ResetFlag(FLAG_HCARRY);
+		REG.SetFlag(FLAG_SUB);
+
+		--reg;
 
 		if (reg == 0x00)
 		{
