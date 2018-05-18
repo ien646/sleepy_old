@@ -19,7 +19,6 @@ namespace sleepy
 		TEST_METHOD(INC_R8_CorrectOperation)
 		{
 			// Setup
-			ADDR phlAddr = 0xDA0F;
 			System sys;
 			sys.Initialize();
 			auto& instMap = sys.CPU.Firmware.InstructionMap;
@@ -48,7 +47,6 @@ namespace sleepy
 		TEST_METHOD(INC_R8_CorrectFlags)
 		{
 			// Setup
-			ADDR phlAddr = 0xDA0F;
 			System sys;
 			sys.Initialize();
 			auto& instMap = sys.CPU.Firmware.InstructionMap;
