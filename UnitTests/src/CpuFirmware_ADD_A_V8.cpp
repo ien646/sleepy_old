@@ -24,6 +24,7 @@ namespace sleepy
 			CpuInstructionDef add_a_h = instMap[OPCODE(0x84)];
 			CpuInstructionDef add_a_l = instMap[OPCODE(0x85)];
 			CpuInstructionDef add_a_phl = instMap[OPCODE(0x86)];
+			CpuInstructionDef add_a_d8 = instMap[OPCODE(0xC6)];
 
 			regs.A = 0x0A;
 			add_a_a.Call(nullptr);
@@ -65,6 +66,11 @@ namespace sleepy
 			regs.A = 0x0A;
 			add_a_phl.Call(nullptr);
 			Assert::IsTrue((0x0A + 0xAA) == regs.A);
+
+			BYTE v8 = 0xAF;
+			regs.A = 0x10;
+			add_a_d8.Call(&v8);
+			Assert::IsTrue((0xAF + 0x10) == regs.A);
 		}
 
 		TEST_METHOD(ADD_A_V8_OverflowCorrectlyHandled)
@@ -79,6 +85,7 @@ namespace sleepy
 			CpuInstructionDef add_a_h = instMap[OPCODE(0x84)];
 			CpuInstructionDef add_a_l = instMap[OPCODE(0x85)];
 			CpuInstructionDef add_a_phl = instMap[OPCODE(0x86)];
+			CpuInstructionDef add_a_d8 = instMap[OPCODE(0xC6)];
 
 			BYTE expectedValue = 0x00;
 
@@ -130,6 +137,11 @@ namespace sleepy
 			add_a_phl.Call(nullptr);
 			expectedValue = (BYTE)(0xF0 + 0xFA);
 			Assert::IsTrue(expectedValue == regs.A);
+
+			BYTE v8 = 0xFF;
+			regs.A = 0x10;
+			add_a_d8.Call(&v8);
+			Assert::IsTrue((0xFF + 0x10) == regs.A);
 		}
 
 		TEST_METHOD(ADD_A_V8_FlagsAreCorrect)

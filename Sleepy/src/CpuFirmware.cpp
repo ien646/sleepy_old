@@ -34,6 +34,7 @@ namespace sleepy
 		InitMap_LD_H_X8();
 		InitMap_LD_L_X8();
 		InitMap_LD_pHL_X8();
+		InitMap_LD_R8_D8();
 
 		InitMap_ADD_A_X8();
 		InitMap_SUB_A_X8();
@@ -489,7 +490,7 @@ namespace sleepy
 		});
 	}
 
-	void CpuFirmware::InitMap_LD_R8_V8()
+	void CpuFirmware::InitMap_LD_R8_D8()
 	{
 		AddInstruction(OPCODE(0x3E), "LD A,d8", 8, 1, [&](BYTE* args)
 		{
@@ -596,6 +597,13 @@ namespace sleepy
 		AddInstruction(0x86, "ADD A,(HL)", 8, 0, [&](BYTE* args)
 		{
 			Opcode_ADD_A_V8(_mem->ReadByte(_regs->ReadHL()));
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xC6, "ADD A,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			Opcode_ADD_A_V8(d8);
 			RET_NO_ARGS_REF;
 		});
 	}
