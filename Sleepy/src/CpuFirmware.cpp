@@ -489,6 +489,66 @@ namespace sleepy
 		});
 	}
 
+	void CpuFirmware::InitMap_LD_R8_V8()
+	{
+		AddInstruction(OPCODE(0x3E), "LD A,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			_regs->A = d8;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x06), "LD B,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			_regs->B = d8;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x0E), "LD C,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			_regs->C = d8;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x16), "LD D,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			_regs->D = d8;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x1E), "LD E,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			_regs->E = d8;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x26), "LD H,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			_regs->H = d8;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x2E), "LD L,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			_regs->L = d8;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x36), "LD (HL),d8", 12, 1, [&](BYTE* args)
+		{
+			ADDR addr = _regs->ReadHL();
+			BYTE d8 = args[0];
+			_mem->WriteByte(addr, d8);
+			RET_NO_ARGS_REF;
+		});
+	}
+
 	void CpuFirmware::InitMap_ADD_A_X8()
 	{
 		AddInstruction(0x87, "ADD A,A", 4, 0, [&](BYTE* args)

@@ -171,6 +171,7 @@
     <ClCompile Include="src\CpuFirmware_EI_DI.cpp" />
     <ClCompile Include="src\CpuFirmware_INC_R8.cpp" />
     <ClCompile Include="src\CpuFirmware_LD_pHL_R8.cpp" />
+    <ClCompile Include="src\CpuFirmware_LD_R8_D8.cpp" />
     <ClCompile Include="src\CpuFirmware_LD_R8_V8.cpp" />
     <ClCompile Include="src\CpuFirmware_OR_A_V8.cpp" />
     <ClCompile Include="src\CpuFirmware_SBC_A_V8.cpp" />
