@@ -39,12 +39,12 @@ namespace sleepy
 
 	constexpr inline bool getBit(BYTE value, BYTE index)
 	{
-		return (value & (1 << index)) == value;
+		return (value | (1 << index)) == value;
 	}
 
 	constexpr inline bool getBit(WORD value, BYTE index)
 	{
-		return (value & (1 << index)) == value;
+		return (value | (1 << index)) == value;
 	}
 
 	struct OPCODE
