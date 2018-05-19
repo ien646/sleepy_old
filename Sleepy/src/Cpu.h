@@ -18,6 +18,7 @@ namespace sleepy
 		void EnableInterrupts();
 		void DisableInterrupts();		
 
+		bool AreInterruptsEnabled();
 	private:
 		bool _interruptsEnabled = false;
 		Memory* _memory = nullptr;

@@ -2,6 +2,7 @@
 
 #include "System.h"
 #include "CpuFirmware.h"
+#include "TestInitMacros.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
@@ -18,13 +19,7 @@ namespace sleepy
 	public:
 		TEST_METHOD(DEC_R8_CorrectOperation)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			auto& mem = sys.Memory;
-			memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef dec_a = instMap[OPCODE(0x3D)];
 			CpuInstructionDef dec_b = instMap[OPCODE(0x05)];
@@ -46,13 +41,7 @@ namespace sleepy
 
 		TEST_METHOD(DEC_R8_CorrectFlags)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			auto& mem = sys.Memory;
-			memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef dec_a = instMap[OPCODE(0x3D)];
 			CpuInstructionDef dec_b = instMap[OPCODE(0x05)];

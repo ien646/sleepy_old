@@ -2,6 +2,7 @@
 
 #include "System.h"
 #include "CpuFirmware.h"
+#include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
 
@@ -18,13 +19,7 @@ namespace sleepy
 	{
 		TEST_METHOD(ADC_A_V8_AdditionIsCorrect_NoFlags)
 		{
-			System sys;
-			sys.Initialize();
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			auto& mem = sys.Memory;
-			memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));
-			regs.ZeroRegisters(true);
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef adc_a_a = instMap[OPCODE(0x8F)];
 			CpuInstructionDef adc_a_b = instMap[OPCODE(0x88)];
@@ -87,13 +82,7 @@ namespace sleepy
 
 		TEST_METHOD(ADC_A_V8_AdditionIsCorrect_WithFlags)
 		{
-			System sys;
-			sys.Initialize();
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			auto& mem = sys.Memory;
-			memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));
-			regs.ZeroRegisters(true);
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef adc_a_a = instMap[OPCODE(0x8F)];
 			CpuInstructionDef adc_a_b = instMap[OPCODE(0x88)];
@@ -164,13 +153,7 @@ namespace sleepy
 
 		TEST_METHOD(ADC_A_V8_FlagsAreCorrect)
 		{
-			System sys;
-			sys.Initialize();
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			auto& mem = sys.Memory;
-			memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));
-			regs.ZeroRegisters(true);
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef adc_a_a = instMap[OPCODE(0x8F)];
 			CpuInstructionDef adc_a_b = instMap[OPCODE(0x88)];

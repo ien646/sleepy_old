@@ -60,9 +60,15 @@
     <ClCompile Include="src\CpuFirmware_CP_R8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CpuFirmware_EI_DI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TestInitMacros.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
