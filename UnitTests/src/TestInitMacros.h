@@ -6,7 +6,11 @@
 										auto& regs = sys.CPU.Registers;\
 										auto& mem = sys.Memory;\
 										memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));\
-										regs.ZeroRegisters(true)
+										regs.ZeroRegisters(true);\
+										const Registers::FLAG FLAG_SUB = Registers::FLAG::SUB;\
+										const Registers::FLAG FLAG_ZERO = Registers::FLAG::ZERO;\
+										const Registers::FLAG FLAG_HCARRY = Registers::FLAG::HALF_CARRY;\
+										const Registers::FLAG FLAG_CARRY = Registers::FLAG::CARRY
 
 #define _CPUFW_SLEEPYTEST_INIT_NOWARN() UNREFERENCED_PARAMETER(instMap);\
 										UNREFERENCED_PARAMETER(regs);\

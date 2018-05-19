@@ -2,6 +2,7 @@
 
 #include "System.h"
 #include "CpuFirmware.h"
+#include "TestInitMacros.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
@@ -10,21 +11,10 @@ namespace sleepy
 {
 	TEST_CLASS(CpuFirmware_INC_R8)
 	{
-		const Registers::FLAG FLAG_SUB = Registers::FLAG::SUB;
-		const Registers::FLAG FLAG_ZERO = Registers::FLAG::ZERO;
-		const Registers::FLAG FLAG_HCARRY = Registers::FLAG::HALF_CARRY;
-		const Registers::FLAG FLAG_CARRY = Registers::FLAG::CARRY;
-
 	public:
 		TEST_METHOD(INC_R8_CorrectOperation)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			auto& mem = sys.Memory;
-			memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef inc_a = instMap[OPCODE(0x3C)];
 			CpuInstructionDef inc_b = instMap[OPCODE(0x04)];
@@ -46,13 +36,7 @@ namespace sleepy
 
 		TEST_METHOD(INC_R8_CorrectFlags)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			auto& mem = sys.Memory;
-			memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef inc_a = instMap[OPCODE(0x3C)];
 			CpuInstructionDef inc_b = instMap[OPCODE(0x04)];

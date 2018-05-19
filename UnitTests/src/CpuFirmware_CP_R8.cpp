@@ -2,6 +2,7 @@
 
 #include "System.h"
 #include "CpuFirmware.h"
+#include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
 
@@ -9,22 +10,11 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace sleepy
 {
-	const Registers::FLAG FLAG_SUB = Registers::FLAG::SUB;
-	const Registers::FLAG FLAG_ZERO = Registers::FLAG::ZERO;
-	const Registers::FLAG FLAG_HCARRY = Registers::FLAG::HALF_CARRY;
-	const Registers::FLAG FLAG_CARRY = Registers::FLAG::CARRY;
-
 	TEST_CLASS(CpuFirmware_CP_V8)
 	{
 		TEST_METHOD(CP_V8_FlagsAreCorrect)
 		{
-			System sys;
-			sys.Initialize();
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			auto& mem = sys.Memory;
-			memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));
-			regs.ZeroRegisters(true);
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef cp_a = instMap[OPCODE(0xBF)];
 			CpuInstructionDef cp_b = instMap[OPCODE(0xB8)];

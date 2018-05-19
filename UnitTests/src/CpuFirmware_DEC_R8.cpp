@@ -11,11 +11,6 @@ namespace sleepy
 {
 	TEST_CLASS(CpuFirmware_DEC_R8)
 	{
-		const Registers::FLAG FLAG_SUB = Registers::FLAG::SUB;
-		const Registers::FLAG FLAG_ZERO = Registers::FLAG::ZERO;
-		const Registers::FLAG FLAG_HCARRY = Registers::FLAG::HALF_CARRY;
-		const Registers::FLAG FLAG_CARRY = Registers::FLAG::CARRY;
-
 	public:
 		TEST_METHOD(DEC_R8_CorrectOperation)
 		{

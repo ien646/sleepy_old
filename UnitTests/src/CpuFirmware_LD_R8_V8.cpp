@@ -2,6 +2,7 @@
 
 #include "System.h"
 #include "CpuFirmware.h"
+#include "TestInitMacros.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
@@ -11,27 +12,9 @@ namespace sleepy
 	TEST_CLASS(CpuFirmware_LD_R8_V8)
 	{
 	public:
-		void ZeroRegisters(System& sys)
-		{
-			sys.CPU.Registers.A = 0x00;
-			sys.CPU.Registers.F = 0x00;
-			sys.CPU.Registers.B = 0x00;
-			sys.CPU.Registers.C = 0x00;
-			sys.CPU.Registers.D = 0x00;
-			sys.CPU.Registers.E = 0x00;
-			sys.CPU.Registers.H = 0x00;
-			sys.CPU.Registers.L = 0x00;
-		}
-
 		TEST_METHOD(CPUF_LD_A_X)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			ZeroRegisters(sys);
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			regs.A = 0xCA;
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef ld_a_a = instMap[OPCODE(0x7F)];
 			CpuInstructionDef ld_b_a = instMap[OPCODE(0x47)];
@@ -41,6 +24,8 @@ namespace sleepy
 			CpuInstructionDef ld_h_a = instMap[OPCODE(0x67)];
 			CpuInstructionDef ld_l_a = instMap[OPCODE(0x6F)];
 
+			regs.A = 0xCA;
+
 			// Run
 			ld_a_a.Call(nullptr);
 			ld_b_a.Call(nullptr);
@@ -48,7 +33,7 @@ namespace sleepy
 			ld_d_a.Call(nullptr);
 			ld_e_a.Call(nullptr);
 			ld_h_a.Call(nullptr);
-			ld_l_a.Call(nullptr);
+			ld_l_a.Call(nullptr);			
 
 			// Assert
 			Assert::IsTrue(regs.A == (BYTE)0xCA);
@@ -62,13 +47,7 @@ namespace sleepy
 
 		TEST_METHOD(CPUF_LD_B_X)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			ZeroRegisters(sys);
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			regs.B = 0xCA;
+			CPUFW_SLEEPY_TESTINIT();		
 
 			CpuInstructionDef ld_a_b = instMap[OPCODE(0x78)];
 			CpuInstructionDef ld_b_b = instMap[OPCODE(0x40)];
@@ -77,6 +56,8 @@ namespace sleepy
 			CpuInstructionDef ld_e_b = instMap[OPCODE(0x58)];
 			CpuInstructionDef ld_h_b = instMap[OPCODE(0x60)];
 			CpuInstructionDef ld_l_b = instMap[OPCODE(0x68)];
+
+			regs.B = 0xCA;
 
 			// Run
 			ld_a_b.Call(nullptr);
@@ -99,13 +80,7 @@ namespace sleepy
 
 		TEST_METHOD(CPUF_LD_C_X)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			ZeroRegisters(sys);
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			regs.C = 0xCA;
+			CPUFW_SLEEPY_TESTINIT();			
 
 			CpuInstructionDef ld_a_c = instMap[OPCODE(0x79)];
 			CpuInstructionDef ld_b_c = instMap[OPCODE(0x41)];
@@ -114,6 +89,8 @@ namespace sleepy
 			CpuInstructionDef ld_e_c = instMap[OPCODE(0x59)];
 			CpuInstructionDef ld_h_c = instMap[OPCODE(0x61)];
 			CpuInstructionDef ld_l_c = instMap[OPCODE(0x69)];
+
+			regs.C = 0xCA;
 
 			// Run
 			ld_a_c.Call(nullptr);
@@ -136,13 +113,7 @@ namespace sleepy
 
 		TEST_METHOD(CPUF_LD_D_X)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			ZeroRegisters(sys);
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			regs.D = 0xCA;
+			CPUFW_SLEEPY_TESTINIT();			
 
 			CpuInstructionDef ld_a_d = instMap[OPCODE(0x7A)];
 			CpuInstructionDef ld_b_d = instMap[OPCODE(0x42)];
@@ -152,6 +123,8 @@ namespace sleepy
 			CpuInstructionDef ld_h_d = instMap[OPCODE(0x62)];
 			CpuInstructionDef ld_l_d = instMap[OPCODE(0x6A)];
 
+			regs.D = 0xCA;
+
 			// Run
 			ld_a_d.Call(nullptr);
 			ld_b_d.Call(nullptr);
@@ -159,7 +132,7 @@ namespace sleepy
 			ld_d_d.Call(nullptr);
 			ld_e_d.Call(nullptr);
 			ld_h_d.Call(nullptr);
-			ld_l_d.Call(nullptr);
+			ld_l_d.Call(nullptr);			
 
 			// Assert
 			Assert::IsTrue(regs.A == (BYTE)0xCA);
@@ -173,13 +146,7 @@ namespace sleepy
 
 		TEST_METHOD(CPUF_LD_E_X)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			ZeroRegisters(sys);
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			regs.E = 0xCA;
+			CPUFW_SLEEPY_TESTINIT();			
 
 			CpuInstructionDef ld_a_e = instMap[OPCODE(0x7B)];
 			CpuInstructionDef ld_b_e = instMap[OPCODE(0x43)];
@@ -188,6 +155,8 @@ namespace sleepy
 			CpuInstructionDef ld_e_e = instMap[OPCODE(0x5B)];
 			CpuInstructionDef ld_h_e = instMap[OPCODE(0x63)];
 			CpuInstructionDef ld_l_e = instMap[OPCODE(0x6B)];
+
+			regs.E = 0xCA;
 
 			// Run
 			ld_a_e.Call(nullptr);
@@ -210,14 +179,8 @@ namespace sleepy
 
 		TEST_METHOD(CPUF_LD_H_X)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			ZeroRegisters(sys);
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			regs.H = 0xCA;
-
+			CPUFW_SLEEPY_TESTINIT();
+			
 			CpuInstructionDef ld_a_h = instMap[OPCODE(0x7C)];
 			CpuInstructionDef ld_b_h = instMap[OPCODE(0x44)];
 			CpuInstructionDef ld_c_h = instMap[OPCODE(0x4C)];
@@ -225,6 +188,8 @@ namespace sleepy
 			CpuInstructionDef ld_e_h = instMap[OPCODE(0x5C)];
 			CpuInstructionDef ld_h_h = instMap[OPCODE(0x64)];
 			CpuInstructionDef ld_l_h = instMap[OPCODE(0x6C)];
+
+			regs.H = 0xCA;
 
 			// Run
 			ld_a_h.Call(nullptr);
@@ -247,13 +212,7 @@ namespace sleepy
 
 		TEST_METHOD(CPUF_LD_L_X)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			ZeroRegisters(sys);
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			regs.L = 0xCA;
+			CPUFW_SLEEPY_TESTINIT();			
 
 			CpuInstructionDef ld_a_l = instMap[OPCODE(0x7D)];
 			CpuInstructionDef ld_b_l = instMap[OPCODE(0x45)];
@@ -262,6 +221,8 @@ namespace sleepy
 			CpuInstructionDef ld_e_l = instMap[OPCODE(0x5D)];
 			CpuInstructionDef ld_h_l = instMap[OPCODE(0x65)];
 			CpuInstructionDef ld_l_l = instMap[OPCODE(0x6D)];
+
+			regs.L = 0xCA;
 
 			// Run
 			ld_a_l.Call(nullptr);
@@ -284,12 +245,7 @@ namespace sleepy
 
 		TEST_METHOD(CPUF_LD_X_ptrHL)
 		{
-			// Setup
-			System sys;
-			sys.Initialize();
-			ZeroRegisters(sys);
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& mem = sys.Memory;
+			CPUFW_SLEEPY_TESTINIT();
 
 			ADDR addr_a = 0x0220;
 			ADDR addr_b = 0x1331;

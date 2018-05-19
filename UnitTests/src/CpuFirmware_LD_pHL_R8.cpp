@@ -2,6 +2,7 @@
 
 #include "System.h"
 #include "CpuFirmware.h"
+#include "TestInitMacros.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
@@ -11,30 +12,9 @@ namespace sleepy
 	TEST_CLASS(CpuFirmware_LD_pHL_R8)
 	{
 	public:
-
-		void ZeroRegisters(System& sys)
-		{
-			sys.CPU.Registers.A = 0x00;
-			sys.CPU.Registers.F = 0x00;
-			sys.CPU.Registers.B = 0x00;
-			sys.CPU.Registers.C = 0x00;
-			sys.CPU.Registers.D = 0x00;
-			sys.CPU.Registers.E = 0x00;
-			sys.CPU.Registers.H = 0x00;
-			sys.CPU.Registers.L = 0x00;
-		}
-
 		TEST_METHOD(LD_pHL_R8)
 		{			
-			// Setup
-			ADDR phlAddr = 0xDA0F;
-			System sys;
-			sys.Initialize();
-			ZeroRegisters(sys);
-			auto& instMap = sys.CPU.Firmware.InstructionMap;
-			auto& regs = sys.CPU.Registers;
-			auto& mem = sys.Memory;
-			memset(mem.data(), 0, (0xFFFF * sizeof(BYTE)));
+			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef ld_phl_a = instMap[OPCODE(0x77)];
 			CpuInstructionDef ld_phl_b = instMap[OPCODE(0x70)];
@@ -43,6 +23,8 @@ namespace sleepy
 			CpuInstructionDef ld_phl_e = instMap[OPCODE(0x73)];
 			CpuInstructionDef ld_phl_h = instMap[OPCODE(0x74)];
 			CpuInstructionDef ld_phl_l = instMap[OPCODE(0x75)];
+
+			ADDR phlAddr = 0xDA0F;
 
 			// A
 			regs.SetHL(phlAddr);

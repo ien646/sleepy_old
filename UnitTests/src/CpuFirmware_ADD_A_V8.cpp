@@ -10,11 +10,6 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace sleepy
 {
-	const Registers::FLAG FLAG_SUB = Registers::FLAG::SUB;
-	const Registers::FLAG FLAG_ZERO = Registers::FLAG::ZERO;
-	const Registers::FLAG FLAG_HCARRY = Registers::FLAG::HALF_CARRY;
-	const Registers::FLAG FLAG_CARRY = Registers::FLAG::CARRY;
-
 	TEST_CLASS(CpuFirmware_ADD_A_V8)
 	{
 		TEST_METHOD(ADD_A_V8_AdditionIsCorrect)
