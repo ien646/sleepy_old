@@ -12,7 +12,7 @@ namespace sleepy
 	TEST_CLASS(CpuFirmware_LD_R8_V8)
 	{
 	public:
-		TEST_METHOD(CPUF_LD_A_X)
+		TEST_METHOD(CPUF_LD_R8_V8)
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
@@ -45,7 +45,7 @@ namespace sleepy
 			Assert::IsTrue(regs.L == (BYTE)0xCA);
 		}
 
-		TEST_METHOD(CPUF_LD_B_X)
+		TEST_METHOD(CPUF_LD_R8_B)
 		{
 			CPUFW_SLEEPY_TESTINIT();		
 
@@ -78,7 +78,7 @@ namespace sleepy
 			Assert::IsTrue(regs.L == (BYTE)0xCA);
 		}
 
-		TEST_METHOD(CPUF_LD_C_X)
+		TEST_METHOD(CPUF_LD_R8_C)
 		{
 			CPUFW_SLEEPY_TESTINIT();			
 
@@ -111,7 +111,7 @@ namespace sleepy
 			Assert::IsTrue(regs.L == (BYTE)0xCA);
 		}
 
-		TEST_METHOD(CPUF_LD_D_X)
+		TEST_METHOD(CPUF_LD_R8_D)
 		{
 			CPUFW_SLEEPY_TESTINIT();			
 
@@ -144,7 +144,7 @@ namespace sleepy
 			Assert::IsTrue(regs.L == (BYTE)0xCA);
 		}
 
-		TEST_METHOD(CPUF_LD_E_X)
+		TEST_METHOD(CPUF_LD_R8_E)
 		{
 			CPUFW_SLEEPY_TESTINIT();			
 
@@ -177,7 +177,7 @@ namespace sleepy
 			Assert::IsTrue(regs.L == (BYTE)0xCA);
 		}
 
-		TEST_METHOD(CPUF_LD_H_X)
+		TEST_METHOD(CPUF_LD_R8_H)
 		{
 			CPUFW_SLEEPY_TESTINIT();
 			
@@ -210,7 +210,7 @@ namespace sleepy
 			Assert::IsTrue(regs.L == (BYTE)0xCA);
 		}
 
-		TEST_METHOD(CPUF_LD_L_X)
+		TEST_METHOD(CPUF_LD_R8_L)
 		{
 			CPUFW_SLEEPY_TESTINIT();			
 
@@ -243,7 +243,7 @@ namespace sleepy
 			Assert::IsTrue(regs.L == (BYTE)0xCA);
 		}
 
-		TEST_METHOD(CPUF_LD_X_ptrHL)
+		TEST_METHOD(CPUF_LD_R8_pHL)
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
