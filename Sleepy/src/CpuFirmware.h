@@ -74,5 +74,7 @@ namespace sleepy
 
 		void Opcode_RRCA();
 		void Opcode_RRA();
+		void Opcode_RLCA();
+		void Opcode_RLA();
 	};
 }

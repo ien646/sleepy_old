@@ -1137,6 +1137,18 @@ namespace sleepy
 			Opcode_RRA();
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(OPCODE(0x07), "RLCA", 4, 0, [&](BYTE* args)
+		{
+			Opcode_RLCA();
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x17), "RLA", 4, 0, [&](BYTE* args)
+		{
+			Opcode_RLA();
+			RET_NO_ARGS_REF;
+		});
 	}
 
 	void CpuFirmware::AddInstruction(OPCODE opc, const std::string & mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call)
@@ -1371,6 +1383,37 @@ namespace sleepy
 
 		BYTE result = (_regs->A >> 1);
 		if (bit_0)
+		{
+			_regs->SetFlag(FLAG_CARRY);
+		}
+
+		_regs->A = result;
+	}
+
+	void CpuFirmware::Opcode_RLCA()
+	{
+		bool bit_7 = getBit(_regs->A, 7);
+
+		_regs->ResetAllFlags();
+
+		BYTE result = (_regs->A << 1);
+		if (bit_7)
+		{
+			_regs->SetFlag(FLAG_CARRY);
+			result |= 0x01;
+		}
+
+		_regs->A = result;
+	}
+
+	void CpuFirmware::Opcode_RLA()
+	{
+		bool bit_7 = getBit(_regs->A, 7);
+
+		_regs->ResetAllFlags();
+
+		BYTE result = (_regs->A << 1);
+		if (bit_7)
 		{
 			_regs->SetFlag(FLAG_CARRY);
 		}
