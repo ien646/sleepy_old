@@ -51,6 +51,8 @@ namespace sleepy
 		InitMap_CP_R8();
 
 		InitMap_BitRotations();
+
+		InitMap_RST();
 	}
 
 	void CpuFirmware::InitMap_Misc()
@@ -1147,6 +1149,57 @@ namespace sleepy
 		AddInstruction(OPCODE(0x17), "RLA", 4, 0, [&](BYTE* args)
 		{
 			Opcode_RLA();
+			RET_NO_ARGS_REF;
+		});
+	}
+
+	void CpuFirmware::InitMap_RST()
+	{
+		AddInstruction(0xC7, "RST 00H", 16, 0, [&](BYTE* args)
+		{
+			_regs->PC = 0x0000;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xCF, "RST 08H", 16, 0, [&](BYTE* args)
+		{
+			_regs->PC = 0x0008;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xD7, "RST 10H", 16, 0, [&](BYTE* args)
+		{
+			_regs->PC = 0x0010;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xDF, "RST 18H", 16, 0, [&](BYTE* args)
+		{
+			_regs->PC = 0x0018;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xE7, "RST 20H", 16, 0, [&](BYTE* args)
+		{
+			_regs->PC = 0x0020;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xEF, "RST 28H", 16, 0, [&](BYTE* args)
+		{
+			_regs->PC = 0x0028;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xF7, "RST 30H", 16, 0, [&](BYTE* args)
+		{
+			_regs->PC = 0x0030;
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xFF, "RST 38H", 16, 0, [&](BYTE* args)
+		{
+			_regs->PC = 0x0038;
 			RET_NO_ARGS_REF;
 		});
 	}

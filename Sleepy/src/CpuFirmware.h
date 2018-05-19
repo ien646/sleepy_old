@@ -58,6 +58,8 @@ namespace sleepy
 
 		void InitMap_BitRotations();
 
+		void InitMap_RST();
+
 		void AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call);
 
 		void Opcode_ADD_A_V8(BYTE v8);
