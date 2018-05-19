@@ -24,6 +24,7 @@ namespace sleepy
 			CpuInstructionDef sub_a_h = instMap[OPCODE(0x94)];
 			CpuInstructionDef sub_a_l = instMap[OPCODE(0x95)];
 			CpuInstructionDef sub_a_phl = instMap[OPCODE(0x96)];
+			CpuInstructionDef sub_a_d8 = instMap[OPCODE(0xD6)];
 
 			BYTE expectedValue = 0x00;
 
@@ -75,6 +76,12 @@ namespace sleepy
 			sub_a_phl.Call(nullptr);
 			expectedValue = (BYTE)(0xFA - 0xAA);
 			Assert::IsTrue(expectedValue == regs.A);
+
+			regs.A = 0xFA;
+			BYTE d8 = 0xAF;
+			sub_a_d8.Call(&d8);
+			expectedValue = (BYTE)(0xFA - 0xAF);
+			Assert::IsTrue(expectedValue == regs.A);
 		}		
 
 		TEST_METHOD(SUB_A_V8_UnderflowCorrectlyHandled)
@@ -89,6 +96,7 @@ namespace sleepy
 			CpuInstructionDef sub_a_h = instMap[OPCODE(0x94)];
 			CpuInstructionDef sub_a_l = instMap[OPCODE(0x95)];
 			CpuInstructionDef sub_a_phl = instMap[OPCODE(0x96)];
+			CpuInstructionDef sub_a_d8 = instMap[OPCODE(0xD6)];
 
 			BYTE expectedValue = 0x00;
 
@@ -138,6 +146,12 @@ namespace sleepy
 			regs.SetHL(addrHL);
 			regs.A = 0xFA;
 			sub_a_phl.Call(nullptr);
+			expectedValue = (BYTE)(0xFA - 0xFF);
+			Assert::IsTrue(expectedValue == regs.A);
+
+			regs.A = 0xFA;
+			BYTE d8 = 0xFF;
+			sub_a_d8.Call(&d8);
 			expectedValue = (BYTE)(0xFA - 0xFF);
 			Assert::IsTrue(expectedValue == regs.A);
 		}

@@ -657,6 +657,13 @@ namespace sleepy
 			Opcode_SUB_A_V8(_mem->ReadByte(_regs->ReadHL()));
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(0xD6, "SUB A,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			Opcode_SUB_A_V8(d8);
+			RET_NO_ARGS_REF;
+		});
 	}
 
 	void CpuFirmware::InitMap_ADC_A_X8()
@@ -706,6 +713,13 @@ namespace sleepy
 		AddInstruction(0x8E, "ADC A,(HL)", 8, 0, [&](BYTE* args)
 		{
 			Opcode_ADC_A_V8(_mem->ReadByte(_regs->ReadHL()));
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xCE, "ADC A,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			Opcode_ADC_A_V8(d8);
 			RET_NO_ARGS_REF;
 		});
 	}
@@ -759,6 +773,13 @@ namespace sleepy
 			Opcode_SBC_A_V8(_mem->ReadByte(_regs->ReadHL()));
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(0xDE, "SBC A,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			Opcode_SBC_A_V8(d8);
+			RET_NO_ARGS_REF;
+		});
 	}
 
 	void CpuFirmware::InitMap_AND_A_X8()
@@ -808,6 +829,13 @@ namespace sleepy
 		AddInstruction(0xA6, "AND A,(HL)", 8, 0, [&](BYTE* args)
 		{
 			Opcode_AND_A_V8(_mem->ReadByte(_regs->ReadHL()));
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xE6, "AND A,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			Opcode_AND_A_V8(d8);
 			RET_NO_ARGS_REF;
 		});
 	}

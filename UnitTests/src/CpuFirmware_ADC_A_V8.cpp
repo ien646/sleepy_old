@@ -24,6 +24,7 @@ namespace sleepy
 			CpuInstructionDef adc_a_h = instMap[OPCODE(0x8C)];
 			CpuInstructionDef adc_a_l = instMap[OPCODE(0x8D)];
 			CpuInstructionDef adc_a_phl = instMap[OPCODE(0x8E)];
+			CpuInstructionDef adc_a_d8 = instMap[OPCODE(0xCE)];
 
 			regs.ResetAllFlags();
 			regs.A = 0x0A;
@@ -73,6 +74,12 @@ namespace sleepy
 			regs.A = 0x0A;
 			adc_a_phl.Call(nullptr);
 			Assert::IsTrue((0x0A + 0xAA) == regs.A);
+
+			regs.ResetAllFlags();
+			regs.A = 0x0A;
+			BYTE d8 = 0x0B;
+			adc_a_d8.Call(&d8);
+			Assert::IsTrue(regs.A == (d8 + 0x0A));
 		}
 
 		TEST_METHOD(ADC_A_V8_AdditionIsCorrect_WithFlags)

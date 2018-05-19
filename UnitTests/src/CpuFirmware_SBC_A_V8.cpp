@@ -24,6 +24,7 @@ namespace sleepy
 			CpuInstructionDef sbc_a_h = instMap[OPCODE(0x9C)];
 			CpuInstructionDef sbc_a_l = instMap[OPCODE(0x9D)];
 			CpuInstructionDef sbc_a_phl = instMap[OPCODE(0x9E)];
+			CpuInstructionDef sbc_a_d8 = instMap[OPCODE(0xDE)];
 
 			regs.ResetAllFlags();
 			regs.A = 0xA0;
@@ -73,6 +74,12 @@ namespace sleepy
 			regs.A = 0xA0;
 			sbc_a_phl.Call(nullptr);
 			Assert::IsTrue((0xA0 - 0x22) == regs.A);
+
+			regs.ResetAllFlags();
+			regs.A = 0xA0;
+			BYTE d8 = 0x1F;
+			sbc_a_d8.Call(&d8);
+			Assert::IsTrue((0xA0 - 0x1F) == regs.A);
 		}
 
 		TEST_METHOD(SBC_A_V8_SubtractionIsCorrect_WithFlags)

@@ -141,7 +141,7 @@ namespace sleepy
 			BYTE v8 = 0xFF;
 			regs.A = 0x10;
 			add_a_d8.Call(&v8);
-			Assert::IsTrue((0xFF + 0x10) == regs.A);
+			Assert::IsTrue((BYTE)(0xFF + 0x10) == regs.A);
 		}
 
 		TEST_METHOD(ADD_A_V8_FlagsAreCorrect)
