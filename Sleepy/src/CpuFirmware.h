@@ -56,6 +56,8 @@ namespace sleepy
 
 		void InitMap_CP_R8();
 
+		void InitMap_BitRotations();
+
 		void AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call);
 
 		void Opcode_ADD_A_V8(BYTE v8);
@@ -69,5 +71,8 @@ namespace sleepy
 		void Opcode_INC_R8(REG_8BIT& reg);
 		void Opcode_DEC_R8(REG_8BIT & reg);
 		void Opcode_CP_R8(BYTE reg);
+
+		void Opcode_RRCA();
+		void Opcode_RRA();
 	};
 }

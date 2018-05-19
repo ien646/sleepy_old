@@ -49,6 +49,8 @@ namespace sleepy
 		InitMap_DEC_R8();
 
 		InitMap_CP_R8();
+
+		InitMap_BitRotations();
 	}
 
 	void CpuFirmware::InitMap_Misc()
@@ -1122,6 +1124,21 @@ namespace sleepy
 		});
 	}
 
+	void CpuFirmware::InitMap_BitRotations()
+	{
+		AddInstruction(OPCODE(0x0F), "RRCA", 4, 0, [&](BYTE* args)
+		{
+			Opcode_RRCA();
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x1F), "RRA", 4, 0, [&](BYTE* args)
+		{
+			Opcode_RRA();
+			RET_NO_ARGS_REF;
+		});
+	}
+
 	void CpuFirmware::AddInstruction(OPCODE opc, const std::string & mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call)
 	{
 		CpuInstructionDef inst(opc, mnem, cycc, argl, call);
@@ -1328,5 +1345,36 @@ namespace sleepy
 			_regs->SetFlag(FLAG_HCARRY);
 		}
 		/* -- omit result -- */
+	}
+
+	void CpuFirmware::Opcode_RRCA()
+	{
+		bool bit_0 = getBit(_regs->A, 0);
+
+		_regs->ResetAllFlags();
+
+		BYTE result = (_regs->A >> 1);
+		if (bit_0)
+		{
+			_regs->SetFlag(FLAG_CARRY);
+			result |= 0x80;
+		}
+
+		_regs->A = result;
+	}
+
+	void CpuFirmware::Opcode_RRA()
+	{
+		bool bit_0 = getBit(_regs->A, 0);
+
+		_regs->ResetAllFlags();
+
+		BYTE result = (_regs->A >> 1);
+		if (bit_0)
+		{
+			_regs->SetFlag(FLAG_CARRY);
+		}
+
+		_regs->A = result;
 	}
 }
