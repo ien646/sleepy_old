@@ -24,6 +24,7 @@ namespace sleepy
 			CpuInstructionDef cp_h = instMap[OPCODE(0xBC)];
 			CpuInstructionDef cp_l = instMap[OPCODE(0xBD)];
 			CpuInstructionDef cp_phl = instMap[OPCODE(0xBE)];
+			CpuInstructionDef cp_d8 = instMap[OPCODE(0xFE)];
 
 			regs.A = 0x00;
 			cp_a.Call(nullptr);

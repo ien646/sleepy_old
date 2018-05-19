@@ -24,6 +24,7 @@ namespace sleepy
 			CpuInstructionDef or_a_h = instMap[OPCODE(0xB4)];
 			CpuInstructionDef or_a_l = instMap[OPCODE(0xB5)];
 			CpuInstructionDef or_a_phl = instMap[OPCODE(0xB6)];
+			CpuInstructionDef or_a_d8 = instMap[OPCODE(0xF6)];
 
 			regs.A = 0xFF;
 			or_a_a.Call(nullptr);
@@ -33,15 +34,47 @@ namespace sleepy
 			or_a_a.Call(nullptr);
 			Assert::IsTrue(0x00 == regs.A);
 
-			regs.A = 0xFF;
-			regs.B = 0xDD;
+			regs.A = 0xAD;
+			regs.B = 0xDA;
 			or_a_b.Call(nullptr);
-			Assert::IsTrue((0xFF | 0xDD) == regs.A);
+			Assert::IsTrue((0xAD | 0xDA) == regs.A);
 
-			regs.A = 0x00;
-			regs.B = 0xDD;
-			or_a_b.Call(nullptr);
-			Assert::IsTrue((0x00 | 0xDD) == regs.A);
+			regs.A = 0xAD;
+			regs.C = 0xDA;
+			or_a_c.Call(nullptr);
+			Assert::IsTrue((0xAD | 0xDA) == regs.A);
+
+			regs.A = 0xAD;
+			regs.D = 0xDA;
+			or_a_d.Call(nullptr);
+			Assert::IsTrue((0xAD | 0xDA) == regs.A);
+
+			regs.A = 0xAD;
+			regs.E = 0xDA;
+			or_a_e.Call(nullptr);
+			Assert::IsTrue((0xAD | 0xDA) == regs.A);
+
+			regs.A = 0xAD;
+			regs.H = 0xDA;
+			or_a_h.Call(nullptr);
+			Assert::IsTrue((0xAD | 0xDA) == regs.A);
+
+			regs.A = 0xAD;
+			regs.L = 0xDA;
+			or_a_l.Call(nullptr);
+			Assert::IsTrue((0xAD | 0xDA) == regs.A);
+
+			regs.A = 0xAD;
+			ADDR phl = 0xFAFA;
+			regs.SetHL(phl);
+			mem.WriteByte(phl, 0xDA);
+			or_a_phl.Call(nullptr);
+			Assert::IsTrue((0xAD | 0xDA) == regs.A);
+
+			regs.A = 0xAD;
+			BYTE d8 = 0xDA;
+			or_a_d8.Call(&d8);
+			Assert::IsTrue((0xAD | 0xDA) == regs.A);
 		}
 
 		TEST_METHOD(OR_A_V8_FlagsAreCorrect)

@@ -889,6 +889,13 @@ namespace sleepy
 			Opcode_OR_A_V8(_mem->ReadByte(_regs->ReadHL()));
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(0xF6, "OR A,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			Opcode_OR_A_V8(d8);
+			RET_NO_ARGS_REF;
+		});
 	}
 
 	void CpuFirmware::InitMap_XOR_A_X8()
@@ -938,6 +945,13 @@ namespace sleepy
 		AddInstruction(0xAE, "XOR A,(HL)", 8, 0, [&](BYTE* args)
 		{
 			Opcode_XOR_A_V8(_mem->ReadByte(_regs->ReadHL()));
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xEE, "XOR A,d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			Opcode_XOR_A_V8(d8);
 			RET_NO_ARGS_REF;
 		});
 	}
@@ -1097,6 +1111,13 @@ namespace sleepy
 		AddInstruction(0xBE, "CP (HL)", 0, 8, [&](BYTE* args)
 		{
 			Opcode_CP_R8(_regs->L);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0xFE, "CP d8", 8, 1, [&](BYTE* args)
+		{
+			BYTE d8 = args[0];
+			Opcode_CP_R8(d8);
 			RET_NO_ARGS_REF;
 		});
 	}

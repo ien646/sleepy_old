@@ -24,6 +24,7 @@ namespace sleepy
 			CpuInstructionDef xor_a_h = instMap[OPCODE(0xAC)];
 			CpuInstructionDef xor_a_l = instMap[OPCODE(0xAD)];
 			CpuInstructionDef xor_a_phl = instMap[OPCODE(0xAE)];
+			CpuInstructionDef xor_a_d8 = instMap[OPCODE(0xEE)];
 
 			regs.A = 0xFF;
 			xor_a_a.Call(nullptr);
@@ -33,15 +34,47 @@ namespace sleepy
 			xor_a_a.Call(nullptr);
 			Assert::IsTrue((0x00 ^ 0x00) == regs.A);
 
-			regs.A = 0x00;
-			regs.B = 0xFF;
+			regs.A = 0xDA;
+			regs.B = 0xAD;
 			xor_a_b.Call(nullptr);
-			Assert::IsTrue((0x00 ^ 0xFF) == regs.A);
+			Assert::IsTrue((0xDA ^ 0xAD) == regs.A);
 
-			regs.A = 0xDD;
-			regs.B = 0xAA;
-			xor_a_b.Call(nullptr);
-			Assert::IsTrue((0xDD ^ 0xAA) == regs.A);
+			regs.A = 0xDA;
+			regs.C = 0xAD;
+			xor_a_c.Call(nullptr);
+			Assert::IsTrue((0xDA ^ 0xAD) == regs.A);
+
+			regs.A = 0xDA;
+			regs.D = 0xAD;
+			xor_a_d.Call(nullptr);
+			Assert::IsTrue((0xDA ^ 0xAD) == regs.A);
+
+			regs.A = 0xDA;
+			regs.E = 0xAD;
+			xor_a_e.Call(nullptr);
+			Assert::IsTrue((0xDA ^ 0xAD) == regs.A);
+
+			regs.A = 0xDA;
+			regs.H = 0xAD;
+			xor_a_h.Call(nullptr);
+			Assert::IsTrue((0xDA ^ 0xAD) == regs.A);
+
+			regs.A = 0xDA;
+			regs.L = 0xAD;
+			xor_a_l.Call(nullptr);
+			Assert::IsTrue((0xDA ^ 0xAD) == regs.A);
+
+			regs.A = 0xDA;
+			BYTE d8 = 0xAD;
+			xor_a_d8.Call(&d8);
+			Assert::IsTrue((0xDA ^ 0xAD) == regs.A);
+
+			ADDR phl = 0xFAFA;
+			regs.SetHL(phl);
+			mem.WriteByte(regs.ReadHL(), 0xAD);
+			regs.A = 0xDA;
+			xor_a_phl.Call(&d8);
+			Assert::IsTrue((0xDA ^ 0xAD) == regs.A);
 		}
 
 		TEST_METHOD(XOR_A_V8_FlagsAreCorrect)
