@@ -2,7 +2,6 @@
 #include "Common.h"
 #include "System.h"
 
-#define SYS _sys
 #define RET_NO_ARGS_REF UNREFERENCED_PARAMETER(args);return
 
 namespace sleepy
@@ -10,7 +9,7 @@ namespace sleepy
 	const Registers::FLAG FLAG_SUB = Registers::FLAG::SUB;
 	const Registers::FLAG FLAG_ZERO = Registers::FLAG::ZERO;
 	const Registers::FLAG FLAG_HCARRY = Registers::FLAG::HALF_CARRY;
-	const Registers::FLAG FLAG_CARRY = Registers::FLAG::CARRY;	
+	const Registers::FLAG FLAG_CARRY = Registers::FLAG::CARRY;
 
 	void CpuFirmware::Initialize(System* sys)
 	{
