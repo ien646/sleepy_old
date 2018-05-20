@@ -37,8 +37,8 @@ namespace sleepy
 		void InitMap_LD_H_X8();
 		void InitMap_LD_L_X8();
 		void InitMap_LD_pHL_X8();
-
 		void InitMap_LD_R8_D8();
+		void InitMap_LD_PTR_A();
 
 		void InitMap_ADD_A_X8();
 		void InitMap_SUB_A_X8();

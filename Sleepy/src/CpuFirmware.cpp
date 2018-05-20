@@ -35,6 +35,7 @@ namespace sleepy
 		InitMap_LD_L_X8();
 		InitMap_LD_pHL_X8();
 		InitMap_LD_R8_D8();
+		InitMap_LD_PTR_A();
 
 		InitMap_ADD_A_X8();
 		InitMap_SUB_A_X8();
@@ -562,6 +563,39 @@ namespace sleepy
 			ADDR addr = _regs->ReadHL();
 			BYTE d8 = args[0];
 			_mem->WriteByte(addr, d8);
+			RET_NO_ARGS_REF;
+		});
+	}
+
+	void CpuFirmware::InitMap_LD_PTR_A()
+	{
+		AddInstruction(OPCODE(0x02), "LD (BC),A", 8, 0, [&](BYTE* args)
+		{
+			ADDR addr = (ADDR)(_regs->ReadBC());
+			_mem->WriteByte(addr, _regs->A);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x12), "LD (DE),A", 8, 0, [&](BYTE* args)
+		{
+			ADDR addr = (ADDR)(_regs->ReadDE());
+			_mem->WriteByte(addr, _regs->A);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x22), "LD (HL+),A", 8, 0, [&](BYTE* args)
+		{
+			ADDR addr = (ADDR)(_regs->ReadHL());
+			_mem->WriteByte(addr, _regs->A);
+			_regs->SetHL(_regs->ReadHL() + 1);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x32), "LD (HL-),A", 8, 0, [&](BYTE* args)
+		{
+			ADDR addr = (ADDR)(_regs->ReadHL());
+			_mem->WriteByte(addr, _regs->A);
+			_regs->SetHL(_regs->ReadHL() - 1);
 			RET_NO_ARGS_REF;
 		});
 	}

@@ -75,6 +75,9 @@
     <ClCompile Include="src\CpuFirmware_Misc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CpuFirmware_LD_RPTR_A.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\stdafx_test.h">
