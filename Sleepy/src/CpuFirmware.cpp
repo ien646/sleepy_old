@@ -83,6 +83,18 @@ namespace sleepy
 			_cpu->EnableInterrupts();
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(OPCODE(0x2F), "CPL", 4, 0, [&](BYTE* args)
+		{
+			Opcode_CPL();
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x3F), "CCF", 4, 0, [&](BYTE* args)
+		{
+			Opcode_CCF();
+			RET_NO_ARGS_REF;
+		});
 	}
 
 	void CpuFirmware::InitMap_LD_A_X8()
@@ -1472,5 +1484,19 @@ namespace sleepy
 		}
 
 		_regs->A = result;
+	}
+
+	void CpuFirmware::Opcode_CPL()
+	{
+		_regs->SetFlag(FLAG_SUB);
+		_regs->SetFlag(FLAG_HCARRY);
+		_regs->A ^= 0xFF;
+	}
+
+	void CpuFirmware::Opcode_CCF()
+	{
+		_regs->ResetFlag(FLAG_SUB);
+		_regs->ResetFlag(FLAG_HCARRY);
+		_regs->InvertFlag(FLAG_CARRY);
 	}
 }

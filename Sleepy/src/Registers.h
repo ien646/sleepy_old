@@ -45,6 +45,7 @@ namespace sleepy
 
 		void SetFlag(FLAG flagMask);
 		void ResetFlag(FLAG flagMask);
+		void InvertFlag(FLAG flagMask);
 
 		bool ReadFlag(FLAG flagMask);
 

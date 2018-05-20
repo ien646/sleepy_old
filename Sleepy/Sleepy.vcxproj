@@ -86,6 +86,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
       <ForcedIncludeFiles>StdAfx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>

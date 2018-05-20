@@ -25,35 +25,35 @@ namespace sleepy
 			CpuInstructionDef rst_30 = instMap[OPCODE(0xF7)];
 			CpuInstructionDef rst_38 = instMap[OPCODE(0xFF)];
 
-			regs.PC == 0xFFFF;
+			regs.PC = 0xFFFF;
 			rst_00.Call(nullptr);
 			Assert::IsTrue(regs.PC == 0x0000);
 
-			regs.PC == 0xFFFF;
+			regs.PC = 0xFFFF;
 			rst_08.Call(nullptr);
 			Assert::IsTrue(regs.PC == 0x0008);
 
-			regs.PC == 0xFFFF;
+			regs.PC = 0xFFFF;
 			rst_10.Call(nullptr);
 			Assert::IsTrue(regs.PC == 0x0010);
 
-			regs.PC == 0xFFFF;
+			regs.PC = 0xFFFF;
 			rst_18.Call(nullptr);
 			Assert::IsTrue(regs.PC == 0x0018);
 
-			regs.PC == 0xFFFF;
+			regs.PC = 0xFFFF;
 			rst_20.Call(nullptr);
 			Assert::IsTrue(regs.PC == 0x0020);
 
-			regs.PC == 0xFFFF;
+			regs.PC = 0xFFFF;
 			rst_28.Call(nullptr);
 			Assert::IsTrue(regs.PC == 0x0028);
 
-			regs.PC == 0xFFFF;
+			regs.PC = 0xFFFF;
 			rst_30.Call(nullptr);
 			Assert::IsTrue(regs.PC == 0x0030);
 
-			regs.PC == 0xFFFF;
+			regs.PC = 0xFFFF;
 			rst_38.Call(nullptr);
 			Assert::IsTrue(regs.PC == 0x0038);
 		}
