@@ -21,9 +21,6 @@
     <ClCompile Include="src\MemoryTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\stdafx_test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\CpuFirmware_ADD_A_V8.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,11 +78,14 @@
     <ClCompile Include="src\CpuFirmware_LD_A_RPTR.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\CpuFirmware_INC_R16.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CpuFirmware_DEC_R16.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\stdafx_test.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\TestInitMacros.h">
       <Filter>Header Files</Filter>
     </ClInclude>

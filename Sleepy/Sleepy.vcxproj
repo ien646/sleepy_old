@@ -81,12 +81,12 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <CppLanguageStandard>gnu++1y</CppLanguageStandard>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
-      <MultiProcessorCompilation>false</MultiProcessorCompilation>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <BrowseInformation>true</BrowseInformation>
-      <PrecompiledHeader>Create</PrecompiledHeader>
-      <ForcedIncludeFiles>StdAfx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <CompileAs>CompileAsCpp</CompileAs>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Bscmake>
       <PreserveSbr>true</PreserveSbr>
@@ -112,6 +112,8 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <CppLanguageStandard>gnu++1y</CppLanguageStandard>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild>false</MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -141,7 +143,6 @@
     <ClInclude Include="src\Memory.h" />
     <ClInclude Include="src\Registers.h" />
     <ClInclude Include="src\System.h" />
-    <ClInclude Include="src\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Common.cpp" />
@@ -151,7 +152,6 @@
     <ClCompile Include="src\Memory.cpp" />
     <ClCompile Include="src\Registers.cpp" />
     <ClCompile Include="src\System.cpp" />
-    <ClCompile Include="src\stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

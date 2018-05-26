@@ -52,8 +52,9 @@ namespace sleepy
 		void InitMap_XOR_A_X8();
 
 		void InitMap_INC_R8();
-
+		void InitMap_INC_R16();
 		void InitMap_DEC_R8();
+		void InitMap_DEC_R16();
 
 		void InitMap_CP_R8();
 
@@ -72,6 +73,7 @@ namespace sleepy
 		void Opcode_OR_A_V8(BYTE v8);
 		void Opcode_XOR_A_V8(BYTE v8);
 		void Opcode_INC_R8(REG_8BIT& reg);
+		void Opcode_INC_R16(REG_16BIT & reg);
 		void Opcode_DEC_R8(REG_8BIT & reg);
 		void Opcode_CP_R8(BYTE reg);
 

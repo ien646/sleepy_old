@@ -90,7 +90,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(VCInstallDir)UnitTest\include;C:\Users\Ien\source\repos\Sleepy\Sleepy\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -99,7 +99,7 @@
       <LanguageStandard>stdcpp17</LanguageStandard>
       <BrowseInformation>true</BrowseInformation>
       <RemoveUnreferencedCodeData>false</RemoveUnreferencedCodeData>
-      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -128,7 +128,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -136,6 +136,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <UseFullPaths>true</UseFullPaths>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -168,8 +169,10 @@
     <ClCompile Include="src\CpuFirmware_AND_A_V8.cpp" />
     <ClCompile Include="src\CpuFirmware_BitRotations.cpp" />
     <ClCompile Include="src\CpuFirmware_CP_R8.cpp" />
+    <ClCompile Include="src\CpuFirmware_DEC_R16.cpp" />
     <ClCompile Include="src\CpuFirmware_DEC_R8.cpp" />
     <ClCompile Include="src\CpuFirmware_EI_DI.cpp" />
+    <ClCompile Include="src\CpuFirmware_INC_R16.cpp" />
     <ClCompile Include="src\CpuFirmware_INC_R8.cpp" />
     <ClCompile Include="src\CpuFirmware_LD_A_RPTR.cpp" />
     <ClCompile Include="src\CpuFirmware_LD_pHL_R8.cpp" />
@@ -184,7 +187,6 @@
     <ClCompile Include="src\CpuFirmware_XOR_A_V8.cpp" />
     <ClCompile Include="src\RegistersTests.cpp" />
     <ClCompile Include="src\MemoryTests.cpp" />
-    <ClCompile Include="src\stdafx_test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sleepy\Sleepy.vcxproj">
@@ -192,7 +194,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\stdafx_test.h" />
     <ClInclude Include="src\TestInitMacros.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

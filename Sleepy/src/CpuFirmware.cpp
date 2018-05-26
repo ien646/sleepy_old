@@ -48,7 +48,9 @@ namespace sleepy
 		InitMap_XOR_A_X8();
 
 		InitMap_INC_R8();
+		InitMap_INC_R16();
 		InitMap_DEC_R8();
+		InitMap_DEC_R16();
 
 		InitMap_CP_R8();
 
@@ -1092,6 +1094,36 @@ namespace sleepy
 		});
 	}
 
+	void CpuFirmware::InitMap_INC_R16()
+	{
+		AddInstruction(0x03, "INC BC", 8, 0, [&](BYTE* args)
+		{
+			WORD val = (WORD)(_regs->ReadBC() + 1);
+			_regs->SetBC(val);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0x13, "INC DE", 8, 0, [&](BYTE* args)
+		{
+			WORD val = (WORD)(_regs->ReadDE() + 1);
+			_regs->SetDE(val);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0x23, "INC HL", 8, 0, [&](BYTE* args)
+		{
+			WORD val = (WORD)(_regs->ReadHL() + 1);
+			_regs->SetHL(val);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0x33, "INC SP", 8, 0, [&](BYTE* args)
+		{
+			_regs->SP += 1;
+			RET_NO_ARGS_REF;
+		});
+	}
+
 	void CpuFirmware::InitMap_DEC_R8()
 	{
 		AddInstruction(0x3D, "DEC A", 4, 0, [&](BYTE* args)
@@ -1142,6 +1174,36 @@ namespace sleepy
 			BYTE val = _mem->ReadByte(addr);
 			Opcode_DEC_R8(val);
 			_mem->WriteByte(addr, val);
+			RET_NO_ARGS_REF;
+		});
+	}
+
+	void CpuFirmware::InitMap_DEC_R16()
+	{
+		AddInstruction(0x0B, "DEC BC", 8, 0, [&](BYTE* args)
+		{
+			WORD val = (WORD)(_regs->ReadBC() - 1);
+			_regs->SetBC(val);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0x1B, "DEC DE", 8, 0, [&](BYTE* args)
+		{
+			WORD val = (WORD)(_regs->ReadDE() - 1);
+			_regs->SetDE(val);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0x2B, "DEC HL", 8, 0, [&](BYTE* args)
+		{
+			WORD val = (WORD)(_regs->ReadHL() - 1);
+			_regs->SetHL(val);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(0x3B, "DEC SP", 8, 0, [&](BYTE* args)
+		{
+			_regs->SP -= 1;
 			RET_NO_ARGS_REF;
 		});
 	}
@@ -1565,4 +1627,6 @@ namespace sleepy
 		_regs->ResetFlag(FLAG_HCARRY);
 		_regs->InvertFlag(FLAG_CARRY);
 	}
+
+
 }
