@@ -37,6 +37,7 @@ namespace sleepy
 		InitMap_LD_R8_D8();
 		InitMap_LD_PTR_A();
 		InitMap_LD_A_PTR();
+		InitMap_LD_R16_D16();
 
 		InitMap_ADD_A_X8();
 		InitMap_SUB_A_X8();
@@ -643,6 +644,33 @@ namespace sleepy
 			_regs->A = _mem->ReadByte(vhl);
 			_regs->SetHL(vhl - 1);
 			RET_NO_ARGS_REF;
+		});
+	}
+
+	void CpuFirmware::InitMap_LD_R16_D16()
+	{
+		AddInstruction(OPCODE(0x01), "LD BC,d16", 12, 2, [&](BYTE* args)
+		{
+			WORD val = readWord(&args[0]);
+			_regs->SetBC(val);
+		});
+
+		AddInstruction(OPCODE(0x11), "LD DE,d16", 12, 2, [&](BYTE* args)
+		{
+			WORD val = readWord(&args[0]);
+			_regs->SetDE(val);
+		});
+
+		AddInstruction(OPCODE(0x21), "LD DE,d16", 12, 2, [&](BYTE* args)
+		{
+			WORD val = readWord(&args[0]);
+			_regs->SetHL(val);
+		});
+
+		AddInstruction(OPCODE(0x31), "LD DE,d16", 12, 2, [&](BYTE* args)
+		{
+			WORD val = readWord(&args[0]);
+			_regs->SP = val;
 		});
 	}
 
