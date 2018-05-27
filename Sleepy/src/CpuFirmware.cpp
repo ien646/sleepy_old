@@ -38,6 +38,7 @@ namespace sleepy
 		InitMap_LD_PTR_A();
 		InitMap_LD_A_PTR();
 		InitMap_LD_R16_D16();
+		InitMap_LD_Misc();
 
 		InitMap_ADD_A_X8();
 		InitMap_SUB_A_X8();
@@ -671,6 +672,21 @@ namespace sleepy
 		{
 			WORD val = readWord(&args[0]);
 			_regs->SP = val;
+		});
+	}
+
+	void CpuFirmware::InitMap_LD_Misc()
+	{
+		AddInstruction(OPCODE(0xE2), "LD (C),A", 8, 0, [&](BYTE* args)
+		{
+			_mem->WriteByte((ADDR)(0xFF00 + _regs->C), _regs->A);
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0xF2), "LD A,(C)", 8, 0, [&](BYTE* args)
+		{
+			_regs->A = _mem->ReadByte(0xFF00 + _regs->C);
+			RET_NO_ARGS_REF;
 		});
 	}
 
