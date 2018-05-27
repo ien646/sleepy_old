@@ -5,6 +5,7 @@
 #include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
+#pragma warning(disable:4189)
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,15 +17,15 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef cp_a = instMap[OPCODE(0xBF)];
-			CpuInstructionDef cp_b = instMap[OPCODE(0xB8)];
-			CpuInstructionDef cp_c = instMap[OPCODE(0xB9)];
-			CpuInstructionDef cp_d = instMap[OPCODE(0xBA)];
-			CpuInstructionDef cp_e = instMap[OPCODE(0xBB)];
-			CpuInstructionDef cp_h = instMap[OPCODE(0xBC)];
-			CpuInstructionDef cp_l = instMap[OPCODE(0xBD)];
-			CpuInstructionDef cp_phl = instMap[OPCODE(0xBE)];
-			CpuInstructionDef cp_d8 = instMap[OPCODE(0xFE)];
+			CpuInstructionDef& cp_a = instMap[OPCODE(0xBF)];
+			CpuInstructionDef& cp_b = instMap[OPCODE(0xB8)];
+			CpuInstructionDef& cp_c = instMap[OPCODE(0xB9)];
+			CpuInstructionDef& cp_d = instMap[OPCODE(0xBA)];
+			CpuInstructionDef& cp_e = instMap[OPCODE(0xBB)];
+			CpuInstructionDef& cp_h = instMap[OPCODE(0xBC)];
+			CpuInstructionDef& cp_l = instMap[OPCODE(0xBD)];
+			CpuInstructionDef& cp_phl = instMap[OPCODE(0xBE)];
+			CpuInstructionDef& cp_d8 = instMap[OPCODE(0xFE)];
 
 			regs.A = 0x00;
 			cp_a.Call(nullptr);

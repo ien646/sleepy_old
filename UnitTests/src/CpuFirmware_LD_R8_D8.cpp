@@ -4,6 +4,8 @@
 #include "CpuFirmware.h"
 #include "TestInitMacros.h"
 
+#pragma warning(disable:4189)
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
 
@@ -16,14 +18,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef ld_a_d8 = instMap[OPCODE(0x3E)];
-			CpuInstructionDef ld_b_d8 = instMap[OPCODE(0x06)];
-			CpuInstructionDef ld_c_d8 = instMap[OPCODE(0x0E)];
-			CpuInstructionDef ld_d_d8 = instMap[OPCODE(0x16)];
-			CpuInstructionDef ld_e_d8 = instMap[OPCODE(0x1E)];
-			CpuInstructionDef ld_h_d8 = instMap[OPCODE(0x26)];
-			CpuInstructionDef ld_l_d8 = instMap[OPCODE(0x2E)];
-			CpuInstructionDef ld_phl_d8 = instMap[OPCODE(0x36)];
+			CpuInstructionDef& ld_a_d8 = instMap[OPCODE(0x3E)];
+			CpuInstructionDef& ld_b_d8 = instMap[OPCODE(0x06)];
+			CpuInstructionDef& ld_c_d8 = instMap[OPCODE(0x0E)];
+			CpuInstructionDef& ld_d_d8 = instMap[OPCODE(0x16)];
+			CpuInstructionDef& ld_e_d8 = instMap[OPCODE(0x1E)];
+			CpuInstructionDef& ld_h_d8 = instMap[OPCODE(0x26)];
+			CpuInstructionDef& ld_l_d8 = instMap[OPCODE(0x2E)];
+			CpuInstructionDef& ld_phl_d8 = instMap[OPCODE(0x36)];
 
 			BYTE d8 = 0xAF;
 

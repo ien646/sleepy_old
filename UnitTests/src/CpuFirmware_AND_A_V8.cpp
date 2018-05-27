@@ -5,6 +5,7 @@
 #include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
+#pragma warning(disable:4189)
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,15 +17,15 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef and_a_a = instMap[OPCODE(0xA7)];
-			CpuInstructionDef and_a_b = instMap[OPCODE(0xA0)];
-			CpuInstructionDef and_a_c = instMap[OPCODE(0xA1)];
-			CpuInstructionDef and_a_d = instMap[OPCODE(0xA2)];
-			CpuInstructionDef and_a_e = instMap[OPCODE(0xA3)];
-			CpuInstructionDef and_a_h = instMap[OPCODE(0xA4)];
-			CpuInstructionDef and_a_l = instMap[OPCODE(0xA5)];
-			CpuInstructionDef and_a_phl = instMap[OPCODE(0xA6)];
-			CpuInstructionDef and_a_d8 = instMap[OPCODE(0xE6)];
+			CpuInstructionDef& and_a_a = instMap[OPCODE(0xA7)];
+			CpuInstructionDef& and_a_b = instMap[OPCODE(0xA0)];
+			CpuInstructionDef& and_a_c = instMap[OPCODE(0xA1)];
+			CpuInstructionDef& and_a_d = instMap[OPCODE(0xA2)];
+			CpuInstructionDef& and_a_e = instMap[OPCODE(0xA3)];
+			CpuInstructionDef& and_a_h = instMap[OPCODE(0xA4)];
+			CpuInstructionDef& and_a_l = instMap[OPCODE(0xA5)];
+			CpuInstructionDef& and_a_phl = instMap[OPCODE(0xA6)];
+			CpuInstructionDef& and_a_d8 = instMap[OPCODE(0xE6)];
 
 			regs.A = 0xFF;
 			and_a_a.Call(nullptr);
@@ -81,14 +82,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef and_a_a = instMap[OPCODE(0xA7)];
-			CpuInstructionDef and_a_b = instMap[OPCODE(0xA0)];
-			CpuInstructionDef and_a_c = instMap[OPCODE(0xA1)];
-			CpuInstructionDef and_a_d = instMap[OPCODE(0xA2)];
-			CpuInstructionDef and_a_e = instMap[OPCODE(0xA3)];
-			CpuInstructionDef and_a_h = instMap[OPCODE(0xA4)];
-			CpuInstructionDef and_a_l = instMap[OPCODE(0xA5)];
-			CpuInstructionDef and_a_phl = instMap[OPCODE(0xA6)];
+			CpuInstructionDef& and_a_a = instMap[OPCODE(0xA7)];
+			CpuInstructionDef& and_a_b = instMap[OPCODE(0xA0)];
+			CpuInstructionDef& and_a_c = instMap[OPCODE(0xA1)];
+			CpuInstructionDef& and_a_d = instMap[OPCODE(0xA2)];
+			CpuInstructionDef& and_a_e = instMap[OPCODE(0xA3)];
+			CpuInstructionDef& and_a_h = instMap[OPCODE(0xA4)];
+			CpuInstructionDef& and_a_l = instMap[OPCODE(0xA5)];
+			CpuInstructionDef& and_a_phl = instMap[OPCODE(0xA6)];
 
 			regs.A = 0xFF;
 			and_a_a.Call(nullptr);

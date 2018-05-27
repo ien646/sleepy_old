@@ -5,6 +5,7 @@
 #include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
+#pragma warning(disable:4189)
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,14 +17,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef rst_00 = instMap[OPCODE(0xC7)];
-			CpuInstructionDef rst_08 = instMap[OPCODE(0xCF)];
-			CpuInstructionDef rst_10 = instMap[OPCODE(0xD7)];
-			CpuInstructionDef rst_18 = instMap[OPCODE(0xDF)];
-			CpuInstructionDef rst_20 = instMap[OPCODE(0xE7)];
-			CpuInstructionDef rst_28 = instMap[OPCODE(0xEF)];
-			CpuInstructionDef rst_30 = instMap[OPCODE(0xF7)];
-			CpuInstructionDef rst_38 = instMap[OPCODE(0xFF)];
+			CpuInstructionDef& rst_00 = instMap[OPCODE(0xC7)];
+			CpuInstructionDef& rst_08 = instMap[OPCODE(0xCF)];
+			CpuInstructionDef& rst_10 = instMap[OPCODE(0xD7)];
+			CpuInstructionDef& rst_18 = instMap[OPCODE(0xDF)];
+			CpuInstructionDef& rst_20 = instMap[OPCODE(0xE7)];
+			CpuInstructionDef& rst_28 = instMap[OPCODE(0xEF)];
+			CpuInstructionDef& rst_30 = instMap[OPCODE(0xF7)];
+			CpuInstructionDef& rst_38 = instMap[OPCODE(0xFF)];
 
 			regs.PC = 0xFFFF;
 			rst_00.Call(nullptr);

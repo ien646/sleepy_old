@@ -5,6 +5,7 @@
 #include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
+#pragma warning(disable:4189)
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,15 +17,15 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef xor_a_a = instMap[OPCODE(0xAF)];
-			CpuInstructionDef xor_a_b = instMap[OPCODE(0xA8)];
-			CpuInstructionDef xor_a_c = instMap[OPCODE(0xA9)];
-			CpuInstructionDef xor_a_d = instMap[OPCODE(0xAA)];
-			CpuInstructionDef xor_a_e = instMap[OPCODE(0xAB)];
-			CpuInstructionDef xor_a_h = instMap[OPCODE(0xAC)];
-			CpuInstructionDef xor_a_l = instMap[OPCODE(0xAD)];
-			CpuInstructionDef xor_a_phl = instMap[OPCODE(0xAE)];
-			CpuInstructionDef xor_a_d8 = instMap[OPCODE(0xEE)];
+			CpuInstructionDef& xor_a_a = instMap[OPCODE(0xAF)];
+			CpuInstructionDef& xor_a_b = instMap[OPCODE(0xA8)];
+			CpuInstructionDef& xor_a_c = instMap[OPCODE(0xA9)];
+			CpuInstructionDef& xor_a_d = instMap[OPCODE(0xAA)];
+			CpuInstructionDef& xor_a_e = instMap[OPCODE(0xAB)];
+			CpuInstructionDef& xor_a_h = instMap[OPCODE(0xAC)];
+			CpuInstructionDef& xor_a_l = instMap[OPCODE(0xAD)];
+			CpuInstructionDef& xor_a_phl = instMap[OPCODE(0xAE)];
+			CpuInstructionDef& xor_a_d8 = instMap[OPCODE(0xEE)];
 
 			regs.A = 0xFF;
 			xor_a_a.Call(nullptr);
@@ -81,14 +82,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef xor_a_a = instMap[OPCODE(0xAF)];
-			CpuInstructionDef xor_a_b = instMap[OPCODE(0xA8)];
-			CpuInstructionDef xor_a_c = instMap[OPCODE(0xA9)];
-			CpuInstructionDef xor_a_d = instMap[OPCODE(0xAA)];
-			CpuInstructionDef xor_a_e = instMap[OPCODE(0xAB)];
-			CpuInstructionDef xor_a_h = instMap[OPCODE(0xAC)];
-			CpuInstructionDef xor_a_l = instMap[OPCODE(0xAD)];
-			CpuInstructionDef xor_a_phl = instMap[OPCODE(0xAE)];
+			CpuInstructionDef& xor_a_a = instMap[OPCODE(0xAF)];
+			CpuInstructionDef& xor_a_b = instMap[OPCODE(0xA8)];
+			CpuInstructionDef& xor_a_c = instMap[OPCODE(0xA9)];
+			CpuInstructionDef& xor_a_d = instMap[OPCODE(0xAA)];
+			CpuInstructionDef& xor_a_e = instMap[OPCODE(0xAB)];
+			CpuInstructionDef& xor_a_h = instMap[OPCODE(0xAC)];
+			CpuInstructionDef& xor_a_l = instMap[OPCODE(0xAD)];
+			CpuInstructionDef& xor_a_phl = instMap[OPCODE(0xAE)];
 
 			regs.A = 0x00;
 			xor_a_a.Call(nullptr);

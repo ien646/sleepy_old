@@ -4,6 +4,8 @@
 #include "CpuFirmware.h"
 #include "TestInitMacros.h"
 
+#pragma warning(disable:4189)
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
 
@@ -15,7 +17,7 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			auto ei = instMap[OPCODE(0xFB)];
+			auto& ei = instMap[OPCODE(0xFB)];
 
 			sys.CPU.DisableInterrupts();
 			ei.Call(nullptr);
@@ -30,7 +32,7 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			auto di = instMap[OPCODE(0xF3)];
+			auto& di = instMap[OPCODE(0xF3)];
 
 			sys.CPU.EnableInterrupts();
 			di.Call(nullptr);

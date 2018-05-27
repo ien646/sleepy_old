@@ -5,6 +5,7 @@
 #include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
+#pragma warning(disable:4189)
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,15 +17,15 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef or_a_a = instMap[OPCODE(0xB7)];
-			CpuInstructionDef or_a_b = instMap[OPCODE(0xB0)];
-			CpuInstructionDef or_a_c = instMap[OPCODE(0xB1)];
-			CpuInstructionDef or_a_d = instMap[OPCODE(0xB2)];
-			CpuInstructionDef or_a_e = instMap[OPCODE(0xB3)];
-			CpuInstructionDef or_a_h = instMap[OPCODE(0xB4)];
-			CpuInstructionDef or_a_l = instMap[OPCODE(0xB5)];
-			CpuInstructionDef or_a_phl = instMap[OPCODE(0xB6)];
-			CpuInstructionDef or_a_d8 = instMap[OPCODE(0xF6)];
+			CpuInstructionDef& or_a_a = instMap[OPCODE(0xB7)];
+			CpuInstructionDef& or_a_b = instMap[OPCODE(0xB0)];
+			CpuInstructionDef& or_a_c = instMap[OPCODE(0xB1)];
+			CpuInstructionDef& or_a_d = instMap[OPCODE(0xB2)];
+			CpuInstructionDef& or_a_e = instMap[OPCODE(0xB3)];
+			CpuInstructionDef& or_a_h = instMap[OPCODE(0xB4)];
+			CpuInstructionDef& or_a_l = instMap[OPCODE(0xB5)];
+			CpuInstructionDef& or_a_phl = instMap[OPCODE(0xB6)];
+			CpuInstructionDef& or_a_d8 = instMap[OPCODE(0xF6)];
 
 			regs.A = 0xFF;
 			or_a_a.Call(nullptr);
@@ -81,14 +82,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef or_a_a = instMap[OPCODE(0xB7)];
-			CpuInstructionDef or_a_b = instMap[OPCODE(0xB0)];
-			CpuInstructionDef or_a_c = instMap[OPCODE(0xB1)];
-			CpuInstructionDef or_a_d = instMap[OPCODE(0xB2)];
-			CpuInstructionDef or_a_e = instMap[OPCODE(0xB3)];
-			CpuInstructionDef or_a_h = instMap[OPCODE(0xB4)];
-			CpuInstructionDef or_a_l = instMap[OPCODE(0xB5)];
-			CpuInstructionDef or_a_phl = instMap[OPCODE(0xB6)];
+			CpuInstructionDef& or_a_a = instMap[OPCODE(0xB7)];
+			CpuInstructionDef& or_a_b = instMap[OPCODE(0xB0)];
+			CpuInstructionDef& or_a_c = instMap[OPCODE(0xB1)];
+			CpuInstructionDef& or_a_d = instMap[OPCODE(0xB2)];
+			CpuInstructionDef& or_a_e = instMap[OPCODE(0xB3)];
+			CpuInstructionDef& or_a_h = instMap[OPCODE(0xB4)];
+			CpuInstructionDef& or_a_l = instMap[OPCODE(0xB5)];
+			CpuInstructionDef& or_a_phl = instMap[OPCODE(0xB6)];
 
 			regs.A = 0xFF;
 			or_a_a.Call(nullptr);

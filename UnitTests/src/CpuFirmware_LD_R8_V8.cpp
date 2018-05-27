@@ -4,6 +4,8 @@
 #include "CpuFirmware.h"
 #include "TestInitMacros.h"
 
+#pragma warning(disable:4189)
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
 
@@ -16,13 +18,13 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef ld_a_a = instMap[OPCODE(0x7F)];
-			CpuInstructionDef ld_b_a = instMap[OPCODE(0x47)];
-			CpuInstructionDef ld_c_a = instMap[OPCODE(0x4F)];
-			CpuInstructionDef ld_d_a = instMap[OPCODE(0x57)];
-			CpuInstructionDef ld_e_a = instMap[OPCODE(0x5F)];
-			CpuInstructionDef ld_h_a = instMap[OPCODE(0x67)];
-			CpuInstructionDef ld_l_a = instMap[OPCODE(0x6F)];
+			CpuInstructionDef& ld_a_a = instMap[OPCODE(0x7F)];
+			CpuInstructionDef& ld_b_a = instMap[OPCODE(0x47)];
+			CpuInstructionDef& ld_c_a = instMap[OPCODE(0x4F)];
+			CpuInstructionDef& ld_d_a = instMap[OPCODE(0x57)];
+			CpuInstructionDef& ld_e_a = instMap[OPCODE(0x5F)];
+			CpuInstructionDef& ld_h_a = instMap[OPCODE(0x67)];
+			CpuInstructionDef& ld_l_a = instMap[OPCODE(0x6F)];
 
 			regs.A = 0xCA;
 
@@ -49,13 +51,13 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();		
 
-			CpuInstructionDef ld_a_b = instMap[OPCODE(0x78)];
-			CpuInstructionDef ld_b_b = instMap[OPCODE(0x40)];
-			CpuInstructionDef ld_c_b = instMap[OPCODE(0x48)];
-			CpuInstructionDef ld_d_b = instMap[OPCODE(0x50)];
-			CpuInstructionDef ld_e_b = instMap[OPCODE(0x58)];
-			CpuInstructionDef ld_h_b = instMap[OPCODE(0x60)];
-			CpuInstructionDef ld_l_b = instMap[OPCODE(0x68)];
+			CpuInstructionDef& ld_a_b = instMap[OPCODE(0x78)];
+			CpuInstructionDef& ld_b_b = instMap[OPCODE(0x40)];
+			CpuInstructionDef& ld_c_b = instMap[OPCODE(0x48)];
+			CpuInstructionDef& ld_d_b = instMap[OPCODE(0x50)];
+			CpuInstructionDef& ld_e_b = instMap[OPCODE(0x58)];
+			CpuInstructionDef& ld_h_b = instMap[OPCODE(0x60)];
+			CpuInstructionDef& ld_l_b = instMap[OPCODE(0x68)];
 
 			regs.B = 0xCA;
 
@@ -82,13 +84,13 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();			
 
-			CpuInstructionDef ld_a_c = instMap[OPCODE(0x79)];
-			CpuInstructionDef ld_b_c = instMap[OPCODE(0x41)];
-			CpuInstructionDef ld_c_c = instMap[OPCODE(0x49)];
-			CpuInstructionDef ld_d_c = instMap[OPCODE(0x51)];
-			CpuInstructionDef ld_e_c = instMap[OPCODE(0x59)];
-			CpuInstructionDef ld_h_c = instMap[OPCODE(0x61)];
-			CpuInstructionDef ld_l_c = instMap[OPCODE(0x69)];
+			CpuInstructionDef& ld_a_c = instMap[OPCODE(0x79)];
+			CpuInstructionDef& ld_b_c = instMap[OPCODE(0x41)];
+			CpuInstructionDef& ld_c_c = instMap[OPCODE(0x49)];
+			CpuInstructionDef& ld_d_c = instMap[OPCODE(0x51)];
+			CpuInstructionDef& ld_e_c = instMap[OPCODE(0x59)];
+			CpuInstructionDef& ld_h_c = instMap[OPCODE(0x61)];
+			CpuInstructionDef& ld_l_c = instMap[OPCODE(0x69)];
 
 			regs.C = 0xCA;
 
@@ -115,13 +117,13 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();			
 
-			CpuInstructionDef ld_a_d = instMap[OPCODE(0x7A)];
-			CpuInstructionDef ld_b_d = instMap[OPCODE(0x42)];
-			CpuInstructionDef ld_c_d = instMap[OPCODE(0x4A)];
-			CpuInstructionDef ld_d_d = instMap[OPCODE(0x52)];
-			CpuInstructionDef ld_e_d = instMap[OPCODE(0x5A)];
-			CpuInstructionDef ld_h_d = instMap[OPCODE(0x62)];
-			CpuInstructionDef ld_l_d = instMap[OPCODE(0x6A)];
+			CpuInstructionDef& ld_a_d = instMap[OPCODE(0x7A)];
+			CpuInstructionDef& ld_b_d = instMap[OPCODE(0x42)];
+			CpuInstructionDef& ld_c_d = instMap[OPCODE(0x4A)];
+			CpuInstructionDef& ld_d_d = instMap[OPCODE(0x52)];
+			CpuInstructionDef& ld_e_d = instMap[OPCODE(0x5A)];
+			CpuInstructionDef& ld_h_d = instMap[OPCODE(0x62)];
+			CpuInstructionDef& ld_l_d = instMap[OPCODE(0x6A)];
 
 			regs.D = 0xCA;
 
@@ -148,13 +150,13 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();			
 
-			CpuInstructionDef ld_a_e = instMap[OPCODE(0x7B)];
-			CpuInstructionDef ld_b_e = instMap[OPCODE(0x43)];
-			CpuInstructionDef ld_c_e = instMap[OPCODE(0x4B)];
-			CpuInstructionDef ld_d_e = instMap[OPCODE(0x53)];
-			CpuInstructionDef ld_e_e = instMap[OPCODE(0x5B)];
-			CpuInstructionDef ld_h_e = instMap[OPCODE(0x63)];
-			CpuInstructionDef ld_l_e = instMap[OPCODE(0x6B)];
+			CpuInstructionDef& ld_a_e = instMap[OPCODE(0x7B)];
+			CpuInstructionDef& ld_b_e = instMap[OPCODE(0x43)];
+			CpuInstructionDef& ld_c_e = instMap[OPCODE(0x4B)];
+			CpuInstructionDef& ld_d_e = instMap[OPCODE(0x53)];
+			CpuInstructionDef& ld_e_e = instMap[OPCODE(0x5B)];
+			CpuInstructionDef& ld_h_e = instMap[OPCODE(0x63)];
+			CpuInstructionDef& ld_l_e = instMap[OPCODE(0x6B)];
 
 			regs.E = 0xCA;
 
@@ -181,13 +183,13 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 			
-			CpuInstructionDef ld_a_h = instMap[OPCODE(0x7C)];
-			CpuInstructionDef ld_b_h = instMap[OPCODE(0x44)];
-			CpuInstructionDef ld_c_h = instMap[OPCODE(0x4C)];
-			CpuInstructionDef ld_d_h = instMap[OPCODE(0x54)];
-			CpuInstructionDef ld_e_h = instMap[OPCODE(0x5C)];
-			CpuInstructionDef ld_h_h = instMap[OPCODE(0x64)];
-			CpuInstructionDef ld_l_h = instMap[OPCODE(0x6C)];
+			CpuInstructionDef& ld_a_h = instMap[OPCODE(0x7C)];
+			CpuInstructionDef& ld_b_h = instMap[OPCODE(0x44)];
+			CpuInstructionDef& ld_c_h = instMap[OPCODE(0x4C)];
+			CpuInstructionDef& ld_d_h = instMap[OPCODE(0x54)];
+			CpuInstructionDef& ld_e_h = instMap[OPCODE(0x5C)];
+			CpuInstructionDef& ld_h_h = instMap[OPCODE(0x64)];
+			CpuInstructionDef& ld_l_h = instMap[OPCODE(0x6C)];
 
 			regs.H = 0xCA;
 
@@ -214,13 +216,13 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();			
 
-			CpuInstructionDef ld_a_l = instMap[OPCODE(0x7D)];
-			CpuInstructionDef ld_b_l = instMap[OPCODE(0x45)];
-			CpuInstructionDef ld_c_l = instMap[OPCODE(0x4D)];
-			CpuInstructionDef ld_d_l = instMap[OPCODE(0x55)];
-			CpuInstructionDef ld_e_l = instMap[OPCODE(0x5D)];
-			CpuInstructionDef ld_h_l = instMap[OPCODE(0x65)];
-			CpuInstructionDef ld_l_l = instMap[OPCODE(0x6D)];
+			CpuInstructionDef& ld_a_l = instMap[OPCODE(0x7D)];
+			CpuInstructionDef& ld_b_l = instMap[OPCODE(0x45)];
+			CpuInstructionDef& ld_c_l = instMap[OPCODE(0x4D)];
+			CpuInstructionDef& ld_d_l = instMap[OPCODE(0x55)];
+			CpuInstructionDef& ld_e_l = instMap[OPCODE(0x5D)];
+			CpuInstructionDef& ld_h_l = instMap[OPCODE(0x65)];
+			CpuInstructionDef& ld_l_l = instMap[OPCODE(0x6D)];
 
 			regs.L = 0xCA;
 
@@ -263,13 +265,13 @@ namespace sleepy
 			mem.data()[addr_h] = 0x11;
 			mem.data()[addr_l] = 0x22;
 
-			CpuInstructionDef ld_a_phl = instMap[OPCODE(0x7E)];
-			CpuInstructionDef ld_b_phl = instMap[OPCODE(0x46)];
-			CpuInstructionDef ld_c_phl = instMap[OPCODE(0x4E)];
-			CpuInstructionDef ld_d_phl = instMap[OPCODE(0x56)];
-			CpuInstructionDef ld_e_phl = instMap[OPCODE(0x5E)];
-			CpuInstructionDef ld_h_phl = instMap[OPCODE(0x66)];
-			CpuInstructionDef ld_l_phl = instMap[OPCODE(0x6E)];
+			CpuInstructionDef& ld_a_phl = instMap[OPCODE(0x7E)];
+			CpuInstructionDef& ld_b_phl = instMap[OPCODE(0x46)];
+			CpuInstructionDef& ld_c_phl = instMap[OPCODE(0x4E)];
+			CpuInstructionDef& ld_d_phl = instMap[OPCODE(0x56)];
+			CpuInstructionDef& ld_e_phl = instMap[OPCODE(0x5E)];
+			CpuInstructionDef& ld_h_phl = instMap[OPCODE(0x66)];
+			CpuInstructionDef& ld_l_phl = instMap[OPCODE(0x6E)];
 
 			// Run
 			ld_a_phl.Call(nullptr);

@@ -5,6 +5,7 @@
 #include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
+#pragma warning(disable:4189)
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,15 +17,15 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef sub_a_a = instMap[OPCODE(0x97)];
-			CpuInstructionDef sub_a_b = instMap[OPCODE(0x90)];
-			CpuInstructionDef sub_a_c = instMap[OPCODE(0x91)];
-			CpuInstructionDef sub_a_d = instMap[OPCODE(0x92)];
-			CpuInstructionDef sub_a_e = instMap[OPCODE(0x93)];
-			CpuInstructionDef sub_a_h = instMap[OPCODE(0x94)];
-			CpuInstructionDef sub_a_l = instMap[OPCODE(0x95)];
-			CpuInstructionDef sub_a_phl = instMap[OPCODE(0x96)];
-			CpuInstructionDef sub_a_d8 = instMap[OPCODE(0xD6)];
+			CpuInstructionDef& sub_a_a = instMap[OPCODE(0x97)];
+			CpuInstructionDef& sub_a_b = instMap[OPCODE(0x90)];
+			CpuInstructionDef& sub_a_c = instMap[OPCODE(0x91)];
+			CpuInstructionDef& sub_a_d = instMap[OPCODE(0x92)];
+			CpuInstructionDef& sub_a_e = instMap[OPCODE(0x93)];
+			CpuInstructionDef& sub_a_h = instMap[OPCODE(0x94)];
+			CpuInstructionDef& sub_a_l = instMap[OPCODE(0x95)];
+			CpuInstructionDef& sub_a_phl = instMap[OPCODE(0x96)];
+			CpuInstructionDef& sub_a_d8 = instMap[OPCODE(0xD6)];
 
 			BYTE expectedValue = 0x00;
 
@@ -88,15 +89,15 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef sub_a_a = instMap[OPCODE(0x97)];
-			CpuInstructionDef sub_a_b = instMap[OPCODE(0x90)];
-			CpuInstructionDef sub_a_c = instMap[OPCODE(0x91)];
-			CpuInstructionDef sub_a_d = instMap[OPCODE(0x92)];
-			CpuInstructionDef sub_a_e = instMap[OPCODE(0x93)];
-			CpuInstructionDef sub_a_h = instMap[OPCODE(0x94)];
-			CpuInstructionDef sub_a_l = instMap[OPCODE(0x95)];
-			CpuInstructionDef sub_a_phl = instMap[OPCODE(0x96)];
-			CpuInstructionDef sub_a_d8 = instMap[OPCODE(0xD6)];
+			CpuInstructionDef& sub_a_a = instMap[OPCODE(0x97)];
+			CpuInstructionDef& sub_a_b = instMap[OPCODE(0x90)];
+			CpuInstructionDef& sub_a_c = instMap[OPCODE(0x91)];
+			CpuInstructionDef& sub_a_d = instMap[OPCODE(0x92)];
+			CpuInstructionDef& sub_a_e = instMap[OPCODE(0x93)];
+			CpuInstructionDef& sub_a_h = instMap[OPCODE(0x94)];
+			CpuInstructionDef& sub_a_l = instMap[OPCODE(0x95)];
+			CpuInstructionDef& sub_a_phl = instMap[OPCODE(0x96)];
+			CpuInstructionDef& sub_a_d8 = instMap[OPCODE(0xD6)];
 
 			BYTE expectedValue = 0x00;
 
@@ -160,14 +161,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef sub_a_a = instMap[OPCODE(0x97)];
-			CpuInstructionDef sub_a_b = instMap[OPCODE(0x90)];
-			CpuInstructionDef sub_a_c = instMap[OPCODE(0x91)];
-			CpuInstructionDef sub_a_d = instMap[OPCODE(0x92)];
-			CpuInstructionDef sub_a_e = instMap[OPCODE(0x93)];
-			CpuInstructionDef sub_a_h = instMap[OPCODE(0x94)];
-			CpuInstructionDef sub_a_l = instMap[OPCODE(0x95)];
-			CpuInstructionDef sub_a_phl = instMap[OPCODE(0x96)];
+			CpuInstructionDef& sub_a_a = instMap[OPCODE(0x97)];
+			CpuInstructionDef& sub_a_b = instMap[OPCODE(0x90)];
+			CpuInstructionDef& sub_a_c = instMap[OPCODE(0x91)];
+			CpuInstructionDef& sub_a_d = instMap[OPCODE(0x92)];
+			CpuInstructionDef& sub_a_e = instMap[OPCODE(0x93)];
+			CpuInstructionDef& sub_a_h = instMap[OPCODE(0x94)];
+			CpuInstructionDef& sub_a_l = instMap[OPCODE(0x95)];
+			CpuInstructionDef& sub_a_phl = instMap[OPCODE(0x96)];
 
 			regs.A = 0x00;
 			sub_a_a.Call(nullptr);

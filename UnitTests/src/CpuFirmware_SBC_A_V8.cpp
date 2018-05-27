@@ -5,6 +5,7 @@
 #include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
+#pragma warning(disable:4189)
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,15 +17,15 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef sbc_a_a = instMap[OPCODE(0x9F)];
-			CpuInstructionDef sbc_a_b = instMap[OPCODE(0x98)];
-			CpuInstructionDef sbc_a_c = instMap[OPCODE(0x99)];
-			CpuInstructionDef sbc_a_d = instMap[OPCODE(0x9A)];
-			CpuInstructionDef sbc_a_e = instMap[OPCODE(0x9B)];
-			CpuInstructionDef sbc_a_h = instMap[OPCODE(0x9C)];
-			CpuInstructionDef sbc_a_l = instMap[OPCODE(0x9D)];
-			CpuInstructionDef sbc_a_phl = instMap[OPCODE(0x9E)];
-			CpuInstructionDef sbc_a_d8 = instMap[OPCODE(0xDE)];
+			CpuInstructionDef& sbc_a_a = instMap[OPCODE(0x9F)];
+			CpuInstructionDef& sbc_a_b = instMap[OPCODE(0x98)];
+			CpuInstructionDef& sbc_a_c = instMap[OPCODE(0x99)];
+			CpuInstructionDef& sbc_a_d = instMap[OPCODE(0x9A)];
+			CpuInstructionDef& sbc_a_e = instMap[OPCODE(0x9B)];
+			CpuInstructionDef& sbc_a_h = instMap[OPCODE(0x9C)];
+			CpuInstructionDef& sbc_a_l = instMap[OPCODE(0x9D)];
+			CpuInstructionDef& sbc_a_phl = instMap[OPCODE(0x9E)];
+			CpuInstructionDef& sbc_a_d8 = instMap[OPCODE(0xDE)];
 
 			regs.ResetAllFlags();
 			regs.A = 0xA0;
@@ -86,14 +87,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef sbc_a_a = instMap[OPCODE(0x9F)];
-			CpuInstructionDef sbc_a_b = instMap[OPCODE(0x98)];
-			CpuInstructionDef sbc_a_c = instMap[OPCODE(0x99)];
-			CpuInstructionDef sbc_a_d = instMap[OPCODE(0x9A)];
-			CpuInstructionDef sbc_a_e = instMap[OPCODE(0x9B)];
-			CpuInstructionDef sbc_a_h = instMap[OPCODE(0x9C)];
-			CpuInstructionDef sbc_a_l = instMap[OPCODE(0x9D)];
-			CpuInstructionDef sbc_a_phl = instMap[OPCODE(0x9E)];
+			CpuInstructionDef& sbc_a_a = instMap[OPCODE(0x9F)];
+			CpuInstructionDef& sbc_a_b = instMap[OPCODE(0x98)];
+			CpuInstructionDef& sbc_a_c = instMap[OPCODE(0x99)];
+			CpuInstructionDef& sbc_a_d = instMap[OPCODE(0x9A)];
+			CpuInstructionDef& sbc_a_e = instMap[OPCODE(0x9B)];
+			CpuInstructionDef& sbc_a_h = instMap[OPCODE(0x9C)];
+			CpuInstructionDef& sbc_a_l = instMap[OPCODE(0x9D)];
+			CpuInstructionDef& sbc_a_phl = instMap[OPCODE(0x9E)];
 
 			regs.ResetAllFlags();
 			regs.SetFlag(FLAG_CARRY);
@@ -157,14 +158,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef sbc_a_a = instMap[OPCODE(0x9F)];
-			CpuInstructionDef sbc_a_b = instMap[OPCODE(0x98)];
-			CpuInstructionDef sbc_a_c = instMap[OPCODE(0x99)];
-			CpuInstructionDef sbc_a_d = instMap[OPCODE(0x9A)];
-			CpuInstructionDef sbc_a_e = instMap[OPCODE(0x9B)];
-			CpuInstructionDef sbc_a_h = instMap[OPCODE(0x9C)];
-			CpuInstructionDef sbc_a_l = instMap[OPCODE(0x9D)];
-			CpuInstructionDef sbc_a_phl = instMap[OPCODE(0x9E)];
+			CpuInstructionDef& sbc_a_a = instMap[OPCODE(0x9F)];
+			CpuInstructionDef& sbc_a_b = instMap[OPCODE(0x98)];
+			CpuInstructionDef& sbc_a_c = instMap[OPCODE(0x99)];
+			CpuInstructionDef& sbc_a_d = instMap[OPCODE(0x9A)];
+			CpuInstructionDef& sbc_a_e = instMap[OPCODE(0x9B)];
+			CpuInstructionDef& sbc_a_h = instMap[OPCODE(0x9C)];
+			CpuInstructionDef& sbc_a_l = instMap[OPCODE(0x9D)];
+			CpuInstructionDef& sbc_a_phl = instMap[OPCODE(0x9E)];
 
 			regs.ResetAllFlags();
 

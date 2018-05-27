@@ -4,6 +4,8 @@
 #include "CpuFirmware.h"
 #include "TestInitMacros.h"
 
+#pragma warning(disable:4189)
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
 
@@ -16,14 +18,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef inc_a = instMap[OPCODE(0x3C)];
-			CpuInstructionDef inc_b = instMap[OPCODE(0x04)];
-			CpuInstructionDef inc_c = instMap[OPCODE(0x0C)];
-			CpuInstructionDef inc_d = instMap[OPCODE(0x14)];
-			CpuInstructionDef inc_e = instMap[OPCODE(0x1C)];
-			CpuInstructionDef inc_h = instMap[OPCODE(0x24)];
-			CpuInstructionDef inc_l = instMap[OPCODE(0x2C)];
-			CpuInstructionDef inc_phl = instMap[OPCODE(0x34)];
+			CpuInstructionDef& inc_a = instMap[OPCODE(0x3C)];
+			CpuInstructionDef& inc_b = instMap[OPCODE(0x04)];
+			CpuInstructionDef& inc_c = instMap[OPCODE(0x0C)];
+			CpuInstructionDef& inc_d = instMap[OPCODE(0x14)];
+			CpuInstructionDef& inc_e = instMap[OPCODE(0x1C)];
+			CpuInstructionDef& inc_h = instMap[OPCODE(0x24)];
+			CpuInstructionDef& inc_l = instMap[OPCODE(0x2C)];
+			CpuInstructionDef& inc_phl = instMap[OPCODE(0x34)];
 
 			regs.A = 0x00;
 			inc_a.Call(nullptr);
@@ -38,14 +40,14 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef inc_a = instMap[OPCODE(0x3C)];
-			CpuInstructionDef inc_b = instMap[OPCODE(0x04)];
-			CpuInstructionDef inc_c = instMap[OPCODE(0x0C)];
-			CpuInstructionDef inc_d = instMap[OPCODE(0x14)];
-			CpuInstructionDef inc_e = instMap[OPCODE(0x1C)];
-			CpuInstructionDef inc_h = instMap[OPCODE(0x24)];
-			CpuInstructionDef inc_l = instMap[OPCODE(0x2C)];
-			CpuInstructionDef inc_phl = instMap[OPCODE(0x24)];
+			CpuInstructionDef& inc_a = instMap[OPCODE(0x3C)];
+			CpuInstructionDef& inc_b = instMap[OPCODE(0x04)];
+			CpuInstructionDef& inc_c = instMap[OPCODE(0x0C)];
+			CpuInstructionDef& inc_d = instMap[OPCODE(0x14)];
+			CpuInstructionDef& inc_e = instMap[OPCODE(0x1C)];
+			CpuInstructionDef& inc_h = instMap[OPCODE(0x24)];
+			CpuInstructionDef& inc_l = instMap[OPCODE(0x2C)];
+			CpuInstructionDef& inc_phl = instMap[OPCODE(0x24)];
 
 			regs.A = 0x00;
 			inc_a.Call(nullptr);

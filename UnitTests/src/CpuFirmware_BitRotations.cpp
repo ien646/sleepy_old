@@ -5,6 +5,7 @@
 #include "TestInitMacros.h"
 
 #pragma warning(disable:4310)
+#pragma warning(disable:4189)
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,7 +17,7 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef rrca = instMap[0x0F];
+			CpuInstructionDef& rrca = instMap[0x0F];
 
 			regs.A = 0x00;
 			rrca.Call(nullptr);
@@ -47,7 +48,7 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef rra = instMap[0x1F];
+			CpuInstructionDef& rra = instMap[0x1F];
 
 			regs.A = 0x00;
 			rra.Call(nullptr);
@@ -78,7 +79,7 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef rlca = instMap[0x07];
+			CpuInstructionDef& rlca = instMap[0x07];
 
 			regs.A = 0x80;
 			rlca.Call(nullptr);
@@ -109,7 +110,7 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef rlca = instMap[0x17];
+			CpuInstructionDef& rlca = instMap[0x17];
 
 			regs.A = 0x80;
 			rlca.Call(nullptr);

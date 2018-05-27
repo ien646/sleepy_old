@@ -4,6 +4,8 @@
 #include "CpuFirmware.h"
 #include "TestInitMacros.h"
 
+#pragma warning(disable:4189)
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
 
@@ -16,10 +18,10 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef ld_pbc_a = instMap[OPCODE(0x02)];
-			CpuInstructionDef ld_pde_a = instMap[OPCODE(0x12)];
-			CpuInstructionDef ld_phli_a = instMap[OPCODE(0x22)];
-			CpuInstructionDef ld_phld_a = instMap[OPCODE(0x32)];
+			CpuInstructionDef& ld_pbc_a = instMap[OPCODE(0x02)];
+			CpuInstructionDef& ld_pde_a = instMap[OPCODE(0x12)];
+			CpuInstructionDef& ld_phli_a = instMap[OPCODE(0x22)];
+			CpuInstructionDef& ld_phld_a = instMap[OPCODE(0x32)];
 
 			BYTE val = 0x00;
 

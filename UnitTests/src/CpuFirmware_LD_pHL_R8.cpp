@@ -4,6 +4,8 @@
 #include "CpuFirmware.h"
 #include "TestInitMacros.h"
 
+#pragma warning(disable:4189)
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace sleepy;
 
@@ -16,13 +18,13 @@ namespace sleepy
 		{			
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef ld_phl_a = instMap[OPCODE(0x77)];
-			CpuInstructionDef ld_phl_b = instMap[OPCODE(0x70)];
-			CpuInstructionDef ld_phl_c = instMap[OPCODE(0x71)];
-			CpuInstructionDef ld_phl_d = instMap[OPCODE(0x72)];
-			CpuInstructionDef ld_phl_e = instMap[OPCODE(0x73)];
-			CpuInstructionDef ld_phl_h = instMap[OPCODE(0x74)];
-			CpuInstructionDef ld_phl_l = instMap[OPCODE(0x75)];
+			CpuInstructionDef& ld_phl_a = instMap[OPCODE(0x77)];
+			CpuInstructionDef& ld_phl_b = instMap[OPCODE(0x70)];
+			CpuInstructionDef& ld_phl_c = instMap[OPCODE(0x71)];
+			CpuInstructionDef& ld_phl_d = instMap[OPCODE(0x72)];
+			CpuInstructionDef& ld_phl_e = instMap[OPCODE(0x73)];
+			CpuInstructionDef& ld_phl_h = instMap[OPCODE(0x74)];
+			CpuInstructionDef& ld_phl_l = instMap[OPCODE(0x75)];
 
 			ADDR phlAddr = 0xDA0F;
 
