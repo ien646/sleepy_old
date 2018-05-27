@@ -99,6 +99,12 @@ namespace sleepy
 			Opcode_CCF();
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(OPCODE(0x27), "DAA", 4, 0, [&](BYTE* args)
+		{			
+			Opcode_DAA();
+			RET_NO_ARGS_REF;
+		});
 	}
 
 	void CpuFirmware::InitMap_LD_A_X8()
@@ -1344,11 +1350,11 @@ namespace sleepy
 		});
 	}
 
-	void CpuFirmware::AddInstruction(OPCODE opc, const std::string & mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call)
+	void CpuFirmware::AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, const CpuInstructionDef::OP_CALL& call)
 	{
 		CpuInstructionDef inst(opc, mnem, cycc, argl, call);
-		auto pair = std::make_pair(opc, inst);
-		auto trash = InstructionMap.insert(pair);
+		auto pair = std::make_pair(opc, std::move(inst));
+		auto trash = InstructionMap.insert(std::move(pair));
 	}
 
 	void CpuFirmware::Opcode_ADD_A_V8(BYTE v8)
@@ -1628,5 +1634,23 @@ namespace sleepy
 		_regs->InvertFlag(FLAG_CARRY);
 	}
 
-
+	void CpuFirmware::Opcode_DAA()
+	{
+		BYTE lowNibble = 0x0F & _regs->A;
+		BYTE hiNibble = (0xF0 & _regs->A) >> 4;
+		if ((lowNibble > 9) || (_regs->ReadFlag(FLAG_HCARRY)))
+		{
+			_regs->A += 0x06;
+		}
+		if ((hiNibble > 9) || (_regs->ReadFlag(FLAG_CARRY)))
+		{
+			_regs->A += 0x60;
+			_regs->SetFlag(FLAG_CARRY);
+		}
+		if (_regs->A == 0x00)
+		{
+			_regs->SetFlag(FLAG_ZERO);
+		}
+		_regs->ResetFlag(FLAG_HCARRY);
+	}
 }

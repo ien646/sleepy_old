@@ -27,7 +27,7 @@ namespace sleepy
 
 		void InitInstructionMap();
 
-		void InitMap_Misc();
+		void InitMap_Misc();		
 
 		void InitMap_LD_A_X8();
 		void InitMap_LD_B_X8();
@@ -62,7 +62,7 @@ namespace sleepy
 
 		void InitMap_RST();
 
-		void AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, CpuInstructionDef::OP_CALL call);
+		void AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, const CpuInstructionDef::OP_CALL& call);
 
 		void Opcode_ADD_A_V8(BYTE v8);
 		void Opcode_SUB_A_V8(BYTE v8);
@@ -73,7 +73,6 @@ namespace sleepy
 		void Opcode_OR_A_V8(BYTE v8);
 		void Opcode_XOR_A_V8(BYTE v8);
 		void Opcode_INC_R8(REG_8BIT& reg);
-		void Opcode_INC_R16(REG_16BIT & reg);
 		void Opcode_DEC_R8(REG_8BIT & reg);
 		void Opcode_CP_R8(BYTE reg);
 
@@ -83,5 +82,6 @@ namespace sleepy
 		void Opcode_RLA();
 		void Opcode_CPL();
 		void Opcode_CCF();
+		void Opcode_DAA();
 	};
 }
