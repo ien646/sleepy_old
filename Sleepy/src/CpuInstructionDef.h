@@ -33,5 +33,9 @@ namespace sleepy
 		CpuInstructionDef() noexcept {};
 
 		CpuInstructionDef(OPCODE opc, const std::string mnem, BYTE cycc, BYTE argsLen, OP_CALL opCall);
+
+		CpuInstructionDef(const CpuInstructionDef& cpsrc) = delete;
+
+		CpuInstructionDef(CpuInstructionDef&& mvsrc);
 	};
 }
