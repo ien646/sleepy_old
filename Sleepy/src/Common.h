@@ -34,7 +34,7 @@ namespace sleepy
 
 	constexpr inline WORD readWord(BYTE* addr)
 	{
-		return composeWord(addr[1], addr[0]);
+		return *reinterpret_cast<WORD*>(addr);
 	}
 
 	constexpr inline bool getBit(BYTE value, BYTE index)
