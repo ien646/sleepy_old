@@ -76,7 +76,7 @@ namespace sleepy
 			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
 		}
 
-		TEST_METHOD(DAA_CorrectOperationAndFlags)
+		TEST_METHOD(DAA_CorrectOperation)
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
@@ -86,46 +86,97 @@ namespace sleepy
 			regs.A = 0x00;
 			daa.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x00);
+			Assert::IsTrue(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.ResetAllFlags();
 			regs.A = 0x99;
 			daa.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x99);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.ResetAllFlags();
 			regs.A = 0xAA;
 			daa.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x10);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.ResetAllFlags();
 			regs.A = 0xCC;
 			daa.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x32);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.ResetAllFlags();
 			regs.A = 0xEE;
 			daa.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x54);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.ResetAllFlags();
 			regs.A = 0xFF;
 			daa.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x65);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.ResetAllFlags();
 			regs.A = 0xA0;
 			daa.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x00);
+			Assert::IsTrue(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.ResetAllFlags();
 			regs.A = 0x0A;
 			daa.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x10);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.ResetAllFlags();
 			regs.A = 0xB1;
 			daa.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x11);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+		}
+
+		TEST_METHOD(SCF_CorrectOperation)
+		{
+			CPUFW_SLEEPY_TESTINIT();
+
+			CpuInstructionDef& scf = instMap[OPCODE(0x37)];
+
+			regs.ResetAllFlags();
+			scf.Call(nullptr);
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+
+			regs.SetFlag(FLAG_CARRY);
+			scf.Call(nullptr);
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
 		}
 	};
 }

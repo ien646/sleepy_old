@@ -105,6 +105,12 @@ namespace sleepy
 			Opcode_DAA();
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(OPCODE(0x37), "SCF", 4, 0, [&](BYTE* args)
+		{
+			_regs->SetFlag(FLAG_CARRY);
+			RET_NO_ARGS_REF;
+		});
 	}
 
 	void CpuFirmware::InitMap_LD_A_X8()
