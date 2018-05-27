@@ -62,5 +62,12 @@ namespace sleepy
 			Assert::IsTrue(0xADAD == memory.ReadWord(0xFA0F));
 			Assert::IsTrue(0xB7B7 == memory.ReadWord(0xAA0A));
 		}
+
+		TEST_METHOD(MemoryRangeTest)
+		{
+			Memory memory;
+			memory.WriteByte(0x0000, 0x00);
+			memory.WriteByte(0xFFFF, 0x00);
+		}
 	};
 }

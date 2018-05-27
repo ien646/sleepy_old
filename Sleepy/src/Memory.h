@@ -21,7 +21,7 @@ namespace sleepy
 		BYTE* data();
 
 	private:		
-		static const size_t TOTAL_MEM_SZ = 0xFFFF;
+		static const size_t TOTAL_MEM_SZ = 0x10000;
 		std::unique_ptr<BYTE[]> _memory;
 	};
 }
