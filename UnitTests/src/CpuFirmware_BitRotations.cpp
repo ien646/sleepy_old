@@ -110,10 +110,10 @@ namespace sleepy
 		{
 			CPUFW_SLEEPY_TESTINIT();
 
-			CpuInstructionDef& rlca = instMap[0x17];
+			CpuInstructionDef& rla = instMap[0x17];
 
 			regs.A = 0x80;
-			rlca.Call(nullptr);
+			rla.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x00);
 			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
 			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
@@ -121,7 +121,7 @@ namespace sleepy
 			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.A = 0x00;
-			rlca.Call(nullptr);
+			rla.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x00);
 			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
 			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
@@ -129,7 +129,7 @@ namespace sleepy
 			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 
 			regs.A = 0x01;
-			rlca.Call(nullptr);
+			rla.Call(nullptr);
 			Assert::IsTrue(regs.A == 0x02);
 			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
 			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
