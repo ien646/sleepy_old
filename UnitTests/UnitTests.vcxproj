@@ -167,6 +167,7 @@
   <ItemGroup>
     <ClCompile Include="src\CpuFirmware_ADC_A_V8.cpp" />
     <ClCompile Include="src\CpuFirmware_ADD_A_V8.cpp" />
+    <ClCompile Include="src\CpuFirmware_ADD_HL_V16.cpp" />
     <ClCompile Include="src\CpuFirmware_AND_A_V8.cpp" />
     <ClCompile Include="src\CpuFirmware_BitRotations.cpp" />
     <ClCompile Include="src\CpuFirmware_CP_R8.cpp" />

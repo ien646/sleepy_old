@@ -44,6 +44,7 @@ namespace sleepy
 		void InitMap_LD_Misc();
 
 		void InitMap_ADD_A_X8();
+		void InitMap_ADD_HL_V16();
 		void InitMap_SUB_A_X8();
 		void InitMap_ADC_A_X8();
 		void InitMap_SBC_A_X8();
@@ -67,6 +68,7 @@ namespace sleepy
 		void AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, const CpuInstructionDef::OP_CALL& call);
 
 		void Opcode_ADD_A_V8(BYTE v8);
+		void Opcode_ADD_HL_V16(WORD v16);
 		void Opcode_SUB_A_V8(BYTE v8);
 		void Opcode_ADC_A_V8(BYTE v8);
 		void Opcode_SBC_A_V8(BYTE v8);

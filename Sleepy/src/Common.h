@@ -12,6 +12,7 @@ namespace sleepy
 	typedef uint8_t BYTE;
 	typedef uint16_t WORD;
 	typedef uint16_t ADDR;
+	typedef uint32_t DWORD;
 
 	/* -- Register value types -- */
 	typedef uint8_t REG_8BIT;

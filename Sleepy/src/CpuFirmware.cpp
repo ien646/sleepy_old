@@ -41,6 +41,7 @@ namespace sleepy
 		InitMap_LD_Misc();
 
 		InitMap_ADD_A_X8();
+		InitMap_ADD_HL_V16();
 		InitMap_SUB_A_X8();
 		InitMap_ADC_A_X8();
 		InitMap_SBC_A_X8();
@@ -748,6 +749,33 @@ namespace sleepy
 		});
 	}
 
+	void CpuFirmware::InitMap_ADD_HL_V16()
+	{
+		AddInstruction(OPCODE(0x09), "ADD HL,BC", 8, 0, [&](BYTE* args)
+		{
+			Opcode_ADD_HL_V16(_regs->ReadBC());
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x19), "ADD HL,DE", 8, 0, [&](BYTE* args)
+		{
+			Opcode_ADD_HL_V16(_regs->ReadDE());
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x29), "ADD HL,HL", 8, 0, [&](BYTE* args)
+		{
+			Opcode_ADD_HL_V16(_regs->ReadHL());
+			RET_NO_ARGS_REF;
+		});
+
+		AddInstruction(OPCODE(0x39), "ADD HL,SP", 8, 0, [&](BYTE* args)
+		{
+			Opcode_ADD_HL_V16(_regs->SP);
+			RET_NO_ARGS_REF;
+		});
+	}
+
 	void CpuFirmware::InitMap_SUB_A_X8()
 	{
 		AddInstruction(0x97, "SUB A,A", 4, 0, [&](BYTE* args)
@@ -1429,6 +1457,24 @@ namespace sleepy
 		}
 
 		_regs->A = (BYTE)result;
+	}
+
+	void CpuFirmware::Opcode_ADD_HL_V16(WORD v16)
+	{
+		_regs->ResetFlag(FLAG_SUB);
+
+		DWORD result = _regs->ReadHL() + v16;
+		if (result > 0x0000FFFF)
+		{
+			_regs->SetFlag(FLAG_CARRY);
+			_regs->SetFlag(FLAG_HCARRY);
+		}
+		else if (result > 0x000000FF)
+		{
+			_regs->SetFlag(FLAG_HCARRY);
+		}
+
+		_regs->SetHL((WORD)result);
 	}
 
 	void CpuFirmware::Opcode_SUB_A_V8(BYTE v8)
