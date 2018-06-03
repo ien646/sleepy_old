@@ -44,7 +44,7 @@ namespace sleepy
 		void InitMap_LD_Misc();
 
 		void InitMap_ADD_A_X8();
-		void InitMap_ADD_HL_V16();
+		void InitMap_ADD_HL_R16();
 		void InitMap_SUB_A_X8();
 		void InitMap_ADC_A_X8();
 		void InitMap_SBC_A_X8();

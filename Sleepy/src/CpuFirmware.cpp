@@ -41,7 +41,7 @@ namespace sleepy
 		InitMap_LD_Misc();
 
 		InitMap_ADD_A_X8();
-		InitMap_ADD_HL_V16();
+		InitMap_ADD_HL_R16();
 		InitMap_SUB_A_X8();
 		InitMap_ADC_A_X8();
 		InitMap_SBC_A_X8();
@@ -531,49 +531,42 @@ namespace sleepy
 		{
 			BYTE d8 = args[0];
 			_regs->A = d8;
-			RET_NO_ARGS_REF;
 		});
 
 		AddInstruction(OPCODE(0x06), "LD B,d8", 8, 1, [&](BYTE* args)
 		{
 			BYTE d8 = args[0];
 			_regs->B = d8;
-			RET_NO_ARGS_REF;
 		});
 
 		AddInstruction(OPCODE(0x0E), "LD C,d8", 8, 1, [&](BYTE* args)
 		{
 			BYTE d8 = args[0];
 			_regs->C = d8;
-			RET_NO_ARGS_REF;
 		});
 
 		AddInstruction(OPCODE(0x16), "LD D,d8", 8, 1, [&](BYTE* args)
 		{
 			BYTE d8 = args[0];
 			_regs->D = d8;
-			RET_NO_ARGS_REF;
 		});
 
 		AddInstruction(OPCODE(0x1E), "LD E,d8", 8, 1, [&](BYTE* args)
 		{
 			BYTE d8 = args[0];
 			_regs->E = d8;
-			RET_NO_ARGS_REF;
 		});
 
 		AddInstruction(OPCODE(0x26), "LD H,d8", 8, 1, [&](BYTE* args)
 		{
 			BYTE d8 = args[0];
 			_regs->H = d8;
-			RET_NO_ARGS_REF;
 		});
 
 		AddInstruction(OPCODE(0x2E), "LD L,d8", 8, 1, [&](BYTE* args)
 		{
 			BYTE d8 = args[0];
 			_regs->L = d8;
-			RET_NO_ARGS_REF;
 		});
 
 		AddInstruction(OPCODE(0x36), "LD (HL),d8", 12, 1, [&](BYTE* args)
@@ -581,7 +574,6 @@ namespace sleepy
 			ADDR addr = _regs->ReadHL();
 			BYTE d8 = args[0];
 			_mem->WriteByte(addr, d8);
-			RET_NO_ARGS_REF;
 		});
 	}
 
@@ -749,7 +741,7 @@ namespace sleepy
 		});
 	}
 
-	void CpuFirmware::InitMap_ADD_HL_V16()
+	void CpuFirmware::InitMap_ADD_HL_R16()
 	{
 		AddInstruction(OPCODE(0x09), "ADD HL,BC", 8, 0, [&](BYTE* args)
 		{
@@ -888,7 +880,6 @@ namespace sleepy
 		{
 			BYTE d8 = args[0];
 			Opcode_ADC_A_V8(d8);
-			RET_NO_ARGS_REF;
 		});
 	}
 
@@ -946,7 +937,6 @@ namespace sleepy
 		{
 			BYTE d8 = args[0];
 			Opcode_SBC_A_V8(d8);
-			RET_NO_ARGS_REF;
 		});
 	}
 
@@ -1004,7 +994,6 @@ namespace sleepy
 		{
 			BYTE d8 = args[0];
 			Opcode_AND_A_V8(d8);
-			RET_NO_ARGS_REF;
 		});
 	}
 
@@ -1062,7 +1051,6 @@ namespace sleepy
 		{
 			BYTE d8 = args[0];
 			Opcode_OR_A_V8(d8);
-			RET_NO_ARGS_REF;
 		});
 	}
 
@@ -1120,7 +1108,6 @@ namespace sleepy
 		{
 			BYTE d8 = args[0];
 			Opcode_XOR_A_V8(d8);
-			RET_NO_ARGS_REF;
 		});
 	}
 
@@ -1346,7 +1333,6 @@ namespace sleepy
 		{
 			BYTE d8 = args[0];
 			Opcode_CP_R8(d8);
-			RET_NO_ARGS_REF;
 		});
 	}
 
