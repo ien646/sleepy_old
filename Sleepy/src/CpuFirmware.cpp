@@ -1294,49 +1294,49 @@ namespace sleepy
 
 	void CpuFirmware::InitMap_CP_R8()
 	{
-		AddInstruction(0xBF, "CP A", 0, 4, [&](BYTE* args)
+		AddInstruction(0xBF, "CP A", 4, 0, [&](BYTE* args)
 		{
 			Opcode_CP_R8(_regs->A);
 			RET_NO_ARGS_REF;
 		});
 
-		AddInstruction(0xB8, "CP B", 0, 4, [&](BYTE* args)
+		AddInstruction(0xB8, "CP B", 4, 0, [&](BYTE* args)
 		{
 			Opcode_CP_R8(_regs->B);
 			RET_NO_ARGS_REF;
 		});
 
-		AddInstruction(0xB9, "CP C", 0, 4, [&](BYTE* args)
+		AddInstruction(0xB9, "CP C", 4, 0, [&](BYTE* args)
 		{
 			Opcode_CP_R8(_regs->C);
 			RET_NO_ARGS_REF;
 		});
 
-		AddInstruction(0xBA, "CP D", 0, 4, [&](BYTE* args)
+		AddInstruction(0xBA, "CP D", 4, 0, [&](BYTE* args)
 		{
 			Opcode_CP_R8(_regs->D);
 			RET_NO_ARGS_REF;
 		});
 
-		AddInstruction(0xBB, "CP E", 0, 4, [&](BYTE* args)
+		AddInstruction(0xBB, "CP E", 4, 0, [&](BYTE* args)
 		{
 			Opcode_CP_R8(_regs->E);
 			RET_NO_ARGS_REF;
 		});
 
-		AddInstruction(0xBC, "CP H", 0, 4, [&](BYTE* args)
+		AddInstruction(0xBC, "CP H", 4, 0, [&](BYTE* args)
 		{
 			Opcode_CP_R8(_regs->H);
 			RET_NO_ARGS_REF;
 		});
 
-		AddInstruction(0xBD, "CP L", 0, 4, [&](BYTE* args)
+		AddInstruction(0xBD, "CP L", 4, 0, [&](BYTE* args)
 		{
 			Opcode_CP_R8(_regs->L);
 			RET_NO_ARGS_REF;
 		});
 
-		AddInstruction(0xBE, "CP (HL)", 0, 8, [&](BYTE* args)
+		AddInstruction(0xBE, "CP (HL)", 8, 0, [&](BYTE* args)
 		{
 			Opcode_CP_R8(_regs->L);
 			RET_NO_ARGS_REF;
