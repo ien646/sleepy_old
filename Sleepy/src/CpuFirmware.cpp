@@ -681,6 +681,13 @@ namespace sleepy
 			_regs->A = _mem->ReadByte(0xFF00 + _regs->C);
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(OPCODE(0x08), "LD (d16),SP", 20, 2, [&](BYTE* args)
+		{
+			ADDR addr = readWord(&args[0]);
+			WORD val = _regs->SP;
+			_mem->WriteWord(addr, val);
+		});
 	}
 
 	void CpuFirmware::InitMap_ADD_A_X8()

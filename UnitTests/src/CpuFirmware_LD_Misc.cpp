@@ -68,5 +68,19 @@ namespace sleepy
 			ld_a_pff00c.Call(nullptr);
 			Assert::IsTrue(regs.A == 0xDD);
 		}
+
+		TEST_METHOD(LD_d16_SP)
+		{
+			CPUFW_SLEEPY_TESTINIT();
+
+			CpuInstructionDef& ld_d16_sp = instMap[OPCODE(0x08)];
+
+			WORD val = 0xFAA7;
+			WORD args = 0xADD3;
+
+			regs.SP = val;
+			ld_d16_sp.Call((BYTE*)&args);
+			Assert::IsTrue(mem.ReadWord(args) == val);
+		}
 	};
 }
