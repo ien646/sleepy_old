@@ -184,5 +184,21 @@ namespace sleepy
 			ld_a_a16.Call((BYTE*)&a16);
 			Assert::IsTrue(regs.A == val);
 		}
+
+		TEST_METHOD(LD_SP_HL)
+		{
+			CPUFW_SLEEPY_TESTINIT();
+			CpuInstructionDef& ld_sp_hl = instMap[0xF9];
+
+			regs.SP = 0xA0AB;
+			regs.SetHL(0xFEFE);
+			ld_sp_hl.Call(nullptr);
+			Assert::IsTrue(regs.SP == 0xFEFE);
+
+			regs.SP = 0xBA0F;
+			regs.SetHL(0x0F13);
+			ld_sp_hl.Call(nullptr);
+			Assert::IsTrue(regs.SP == 0x0F13);
+		}
 	};
 }

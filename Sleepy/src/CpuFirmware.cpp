@@ -133,6 +133,13 @@ namespace sleepy
 				_regs->SetFlag(FLAG_HCARRY);
 			}
 		});
+
+		AddInstruction(OPCODE(0xF9), "LD SP,HL", 8, 0, [&](BYTE* args)
+		{
+			WORD hl = _regs->ReadHL();
+			_regs->SP = hl;
+			RET_NO_ARGS_REF;
+		});
 	}
 
 	void CpuFirmware::InitMap_LD_A_X8()
