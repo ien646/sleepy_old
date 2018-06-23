@@ -114,6 +114,25 @@ namespace sleepy
 			_regs->SetFlag(FLAG_CARRY);
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(OPCODE(0xE8), "ADD SP,d8", 16, 1, [&](BYTE* args)
+		{
+			BYTE d8 = *&args[0];
+			DWORD val = _regs->SP + d8;
+			_regs->SP = val;
+
+			_regs->ResetAllFlags();
+
+			if (val > BYTE_MAX)
+			{
+				_regs->SetFlag(FLAG_CARRY);
+				_regs->SetFlag(FLAG_HCARRY);
+			}
+			else if (val > HBYTE_MAX)
+			{
+				_regs->SetFlag(FLAG_HCARRY);
+			}
+		});
 	}
 
 	void CpuFirmware::InitMap_LD_A_X8()

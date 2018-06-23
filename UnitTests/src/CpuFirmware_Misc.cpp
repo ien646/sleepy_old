@@ -178,5 +178,75 @@ namespace sleepy
 			scf.Call(nullptr);
 			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
 		}
+
+		TEST_METHOD(ADD_SP_d8)
+		{
+			CPUFW_SLEEPY_TESTINIT();
+
+			CpuInstructionDef& add_sp_d8 = instMap[0xE8];
+
+			BYTE d8 = 0x00;
+
+			regs.SP = 0xAAAA;
+			d8 = 0xBB;
+			add_sp_d8.Call(&d8);
+			Assert::IsTrue(regs.SP == (0xAAAA + 0xBB));
+
+			regs.SP = 0x0000;
+			d8 = 0x0F;
+			add_sp_d8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
+
+			regs.SP = 0x0001;
+			d8 = 0x0F;
+			add_sp_d8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
+
+			regs.SP = 0x00F0;
+			d8 = 0x0F;
+			add_sp_d8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
+
+			regs.SP = 0x00F1;
+			d8 = 0x0F;
+			add_sp_d8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+
+			regs.SP = 0xFFF0;
+			d8 = 0x0F;
+			add_sp_d8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+
+			regs.SP = 0xFFF1;
+			d8 = 0x0F;
+			add_sp_d8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+
+			regs.SP = 0xFFFF;
+			d8 = 0x0F;
+			add_sp_d8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+		}
 	};
 }
