@@ -82,5 +82,64 @@ namespace sleepy
 			ld_d16_sp.Call((BYTE*)&args);
 			Assert::IsTrue(mem.ReadWord(args) == val);
 		}
+
+		TEST_METHOD(LD_HL_SPd8)
+		{
+			CPUFW_SLEEPY_TESTINIT();
+
+			CpuInstructionDef& ld_hl_spd8 = instMap[0xF8];
+			BYTE d8 = 0x00;
+
+			regs.SP = 0xAAAA;
+			d8 = 0xBB;
+			ld_hl_spd8.Call(&d8);
+			Assert::IsTrue(regs.ReadHL() == (WORD)(0xAAAA + 0xBB));
+
+			regs.ResetAllFlags();
+			regs.SP = 0x0000;
+			d8 = HBYTE_MAX;
+			ld_hl_spd8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsFalse(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
+
+			regs.ResetAllFlags();
+			regs.SP = 0x0001;
+			d8 = HBYTE_MAX;
+			ld_hl_spd8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
+
+			regs.ResetAllFlags();
+			regs.SP = 0x00F0;
+			d8 = HBYTE_MAX;
+			ld_hl_spd8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsFalse(regs.ReadFlag(FLAG_CARRY));
+
+			regs.ResetAllFlags();
+			regs.SP = 0x00F1;
+			d8 = HBYTE_MAX;
+			ld_hl_spd8.Call(&d8);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+
+			regs.ResetAllFlags();
+			regs.SP = 0xFFF1;
+			d8 = HBYTE_MAX;
+			ld_hl_spd8.Call(&d8);
+			Assert::IsTrue(regs.ReadHL() == 0x0000);
+			Assert::IsFalse(regs.ReadFlag(FLAG_ZERO));
+			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
+			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
+			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+		}
 	};
 }

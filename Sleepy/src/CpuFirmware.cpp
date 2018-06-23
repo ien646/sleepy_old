@@ -688,6 +688,25 @@ namespace sleepy
 			WORD val = _regs->SP;
 			_mem->WriteWord(addr, val);
 		});
+
+		AddInstruction(OPCODE(0xF8), "LD HL, SP + d8", 12, 1, [&](BYTE* args)
+		{
+			BYTE d8 = *(&args[0]);
+			DWORD val = d8 + _regs->SP;
+			_regs->SetHL((WORD)val);
+
+			_regs->ResetAllFlags();
+
+			if (val > BYTE_MAX)
+			{
+				_regs->SetFlag(FLAG_CARRY);
+				_regs->SetFlag(FLAG_HCARRY);
+			}
+			else if (val > HBYTE_MAX)
+			{
+				_regs->SetFlag(FLAG_HCARRY);
+			}
+		});
 	}
 
 	void CpuFirmware::InitMap_ADD_A_X8()
