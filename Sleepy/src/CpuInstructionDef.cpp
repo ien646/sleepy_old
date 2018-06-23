@@ -2,7 +2,7 @@
 
 namespace sleepy
 {
-	CpuInstructionDef::CpuInstructionDef(OPCODE opc, const std::string mnem, BYTE cycc, BYTE argsLen, OP_CALL opCall)
+	CpuInstructionDef::CpuInstructionDef(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argsLen, OP_CALL opCall)
 	{
 		Opcode = opc;
 		Mnemonic = mnem;
@@ -11,7 +11,7 @@ namespace sleepy
 		Call = opCall;
 	}
 
-	CpuInstructionDef::CpuInstructionDef(CpuInstructionDef && mvsrc)
+	CpuInstructionDef::CpuInstructionDef(CpuInstructionDef&& mvsrc) noexcept
 	{
 		Opcode = std::move(mvsrc.Opcode);
 		Mnemonic = std::move(mvsrc.Mnemonic);
