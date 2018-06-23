@@ -46,7 +46,6 @@ namespace sleepy
 			CPUFW_SLEEPY_TESTINIT();
 
 			CpuInstructionDef& ld_a_pff00c = instMap[OPCODE(0xF2)];
-			ADDR addr;
 
 			regs.C = 0x00;
 			mem.WriteByte(0xFF00 + regs.C, 0xAA);
@@ -140,6 +139,50 @@ namespace sleepy
 			Assert::IsFalse(regs.ReadFlag(FLAG_SUB));
 			Assert::IsTrue(regs.ReadFlag(FLAG_HCARRY));
 			Assert::IsTrue(regs.ReadFlag(FLAG_CARRY));
+		}
+
+		TEST_METHOD(LD_a16_A)
+		{
+			CPUFW_SLEEPY_TESTINIT();
+			CpuInstructionDef& ld_a16_a = instMap[0xEA];
+			ADDR a16 = 0x0000;
+
+			regs.A = 0x00;
+			a16 = 0xBEBA;
+			ld_a16_a.Call((BYTE*)&a16);
+			Assert::IsTrue(mem.ReadByte(a16) == 0x00);
+
+			regs.A = 0xCC;
+			a16 = 0xACAC;
+			ld_a16_a.Call((BYTE*)&a16);
+			Assert::IsTrue(mem.ReadByte(a16) == 0xCC);
+		}
+
+		TEST_METHOD(LD_A_a16)
+		{
+			CPUFW_SLEEPY_TESTINIT();
+			CpuInstructionDef& ld_a_a16 = instMap[0xFA];
+
+			ADDR a16 = 0x0000;
+			BYTE val = 0x00;
+
+			a16 = 0x0000;
+			val = 0x00;
+			mem.WriteByte(a16, val);
+			ld_a_a16.Call((BYTE*)&a16);
+			Assert::IsTrue(regs.A == val);
+
+			a16 = 0x1111;
+			val = 0x21;
+			mem.WriteByte(a16, val);
+			ld_a_a16.Call((BYTE*)&a16);
+			Assert::IsTrue(regs.A == val);
+
+			a16 = 0xFFFF;
+			val = 0xAF;
+			mem.WriteByte(a16, val);
+			ld_a_a16.Call((BYTE*)&a16);
+			Assert::IsTrue(regs.A == val);
 		}
 	};
 }

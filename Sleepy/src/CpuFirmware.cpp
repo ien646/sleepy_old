@@ -119,7 +119,7 @@ namespace sleepy
 		{
 			BYTE d8 = *&args[0];
 			DWORD val = _regs->SP + d8;
-			_regs->SP = val;
+			_regs->SP = (WORD)val;
 
 			_regs->ResetAllFlags();
 
@@ -725,6 +725,20 @@ namespace sleepy
 			{
 				_regs->SetFlag(FLAG_HCARRY);
 			}
+		});
+
+		AddInstruction(OPCODE(0xEA), "LD (a16), A", 16, 2, [&](BYTE* args)
+		{
+			ADDR a16 = readWord(args);
+			BYTE val = _regs->A;
+			_mem->WriteByte(a16, val);
+		});
+
+		AddInstruction(OPCODE(0xFA), "LD A, (a16)", 16, 2, [&](BYTE* args)
+		{
+			ADDR a16 = readWord(args);
+			BYTE val = _mem->ReadByte(a16);
+			_regs->A = val;
 		});
 	}
 
