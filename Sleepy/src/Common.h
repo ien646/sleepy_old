@@ -18,6 +18,11 @@ namespace sleepy
 	typedef uint8_t REG_8BIT;
 	typedef uint16_t REG_16BIT;
 
+	const BYTE  HBYTE_MAX   = 0x0F;
+	const BYTE  BYTE_MAX	= 0xFF;
+	const WORD  WORD_MAX	= 0xFFFF;
+	const DWORD DWORD_MAX	= 0xFFFFFFFF;
+
 	constexpr inline BYTE highByte(WORD val) 	
 	{ 
 		return (BYTE)(val >> 8); 
