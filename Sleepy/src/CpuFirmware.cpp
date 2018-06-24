@@ -749,6 +749,21 @@ namespace sleepy
 			_regs->SP = hl;
 			RET_NO_ARGS_REF;
 		});
+
+		AddInstruction(OPCODE(0xE0), "LDH ($FF00+a8), A", 12, 1, [&](BYTE* args)
+		{
+			BYTE a8 = *&args[0];
+			WORD addr = 0xFF00 + a8;
+			_mem->WriteByte(addr, _regs->A);
+		});
+
+		AddInstruction(OPCODE(0xF0), "LDH A, ($FF00+a8)", 12, 1, [&](BYTE* args)
+		{
+			BYTE a8 = *&args[0];
+			WORD addr = 0xFF00 + a8;
+			BYTE val = _mem->ReadByte(addr);
+			_regs->A = val;
+		});
 	}
 
 	void CpuFirmware::InitMap_ADD_A_X8()

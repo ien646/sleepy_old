@@ -200,5 +200,49 @@ namespace sleepy
 			ld_sp_hl.Call(nullptr);
 			Assert::IsTrue(regs.SP == 0x0F13);
 		}
+
+		TEST_METHOD(LD_pFF00a8_A)
+		{
+			CPUFW_SLEEPY_TESTINIT();
+			CpuInstructionDef& ld_pff00a8_a = instMap[0xE0];
+
+			BYTE a8 = 0x00;
+			ADDR addr = 0x0000;
+
+			a8 = 0x33;
+			addr = 0xFF00 + a8;
+			regs.A = 0xAB;
+			ld_pff00a8_a.Call(&a8);
+			Assert::IsTrue(mem.ReadByte(addr) == 0xAB);
+
+			a8 = 0xFF;
+			addr = 0xFF00 + a8;
+			regs.A = 0x12;
+			ld_pff00a8_a.Call(&a8);
+			Assert::IsTrue(mem.ReadByte(addr) == 0x12);
+		}
+
+		TEST_METHOD(LD_A_pFF00a8)
+		{
+			CPUFW_SLEEPY_TESTINIT();
+			CpuInstructionDef& ld_pff00a8_a = instMap[0xF0];
+
+			BYTE a8 = 0x00;
+			ADDR addr = 0x0000;
+
+			a8 = 0x33;
+			addr = 0xFF00 + a8;
+			mem.WriteByte(addr, 0x55);
+			regs.A = 0x00;
+			ld_pff00a8_a.Call(&a8);
+			Assert::IsTrue(regs.A == 0x55);
+
+			a8 = 0x33;
+			addr = 0xFF00 + a8;
+			mem.WriteByte(addr, 0x55);
+			regs.A = 0x00;
+			ld_pff00a8_a.Call(&a8);
+			Assert::IsTrue(regs.A == 0x55);
+		}
 	};
 }
