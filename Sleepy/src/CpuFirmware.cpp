@@ -134,12 +134,7 @@ namespace sleepy
 			}
 		});
 
-		AddInstruction(OPCODE(0xF9), "LD SP,HL", 8, 0, [&](BYTE* args)
-		{
-			WORD hl = _regs->ReadHL();
-			_regs->SP = hl;
-			RET_NO_ARGS_REF;
-		});
+		
 	}
 
 	void CpuFirmware::InitMap_LD_A_X8()
@@ -746,6 +741,13 @@ namespace sleepy
 			ADDR a16 = readWord(args);
 			BYTE val = _mem->ReadByte(a16);
 			_regs->A = val;
+		});
+
+		AddInstruction(OPCODE(0xF9), "LD SP,HL", 8, 0, [&](BYTE* args)
+		{
+			WORD hl = _regs->ReadHL();
+			_regs->SP = hl;
+			RET_NO_ARGS_REF;
 		});
 	}
 
