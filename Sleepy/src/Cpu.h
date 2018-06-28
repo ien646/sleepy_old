@@ -11,17 +11,16 @@ namespace sleepy
 	{
 	public:
 		Registers Registers;
-		CpuFirmware Firmware;
+		UPTR<CpuFirmware> Firmware;
 
-		Cpu() noexcept;
-		void Initialize(System* sys);
+		Cpu(System& sys);
 		void EnableInterrupts();
 		void DisableInterrupts();		
 
 		bool AreInterruptsEnabled();
 	private:
 		bool _interruptsEnabled = false;
-		Memory* _memory = nullptr;
-		System* _sys = nullptr;
+		UPTR<Memory>& _memory;
+		System& _sys;
 	};
 }

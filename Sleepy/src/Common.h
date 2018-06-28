@@ -2,6 +2,7 @@
 
 #include <cinttypes>
 #include <memory>
+#include <utility>
 
 #define UNREFERENCED_PARAMETER(x) x
 #define UPTR std::unique_ptr
@@ -38,9 +39,9 @@ namespace sleepy
 		return (hibyte << 8) | lobyte;
 	}
 
-	constexpr inline WORD readWord(BYTE* addr)
+	constexpr inline WORD readWord(const BYTE* addr)
 	{
-		return *reinterpret_cast<WORD*>(addr);
+		return *((WORD*)(addr));
 	}
 
 	constexpr inline bool getBit(BYTE value, BYTE index)

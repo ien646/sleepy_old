@@ -1,11 +1,15 @@
 #include "System.h"
 
-sleepy::System::System() noexcept
+namespace sleepy
 {
-	CPU.Initialize(this);
-}
+	sleepy::System::System() noexcept
+	{
 
-void sleepy::System::Initialize()
-{
-	CPU.Initialize(this);
+	}
+
+	void sleepy::System::Initialize()
+	{
+		this->CPU = std::make_unique<sleepy::Cpu>(*this);
+		this->Memory = std::make_unique<sleepy::Memory>();
+	}
 }

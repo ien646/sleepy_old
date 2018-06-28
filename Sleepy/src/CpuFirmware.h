@@ -8,6 +8,7 @@
 #include <string>
 #include <map>
 
+
 namespace sleepy
 {
 	class System;
@@ -16,14 +17,15 @@ namespace sleepy
 	class CpuFirmware
 	{
 	public:
-		void Initialize(System* sys);
+		CpuFirmware() = delete;
+		CpuFirmware(System& sys);
 		std::map<OPCODE, CpuInstructionDef> InstructionMap;
 
 	private:
-		System* _sys = nullptr;
-		Registers* _regs = nullptr;
-		Cpu* _cpu = nullptr;
-		Memory* _mem = nullptr;
+		System& _sys;
+		Registers& _regs;
+		UPTR<Cpu>& _cpu;
+		UPTR<Memory>& _mem;
 
 		void InitInstructionMap();
 

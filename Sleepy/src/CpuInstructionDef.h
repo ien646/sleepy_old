@@ -13,7 +13,7 @@ namespace sleepy
 	class CpuInstructionDef
 	{
 	public:
-		typedef std::function<void(BYTE*)> OP_CALL;
+		typedef std::function<void(const BYTE*)> OP_CALL;
 
 		// Cpu instruction memory-ordered opcode
 		OPCODE Opcode = OPCODE(0xFF, 0x00);

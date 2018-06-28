@@ -3,18 +3,13 @@
 
 namespace sleepy
 {
-
-	Cpu::Cpu() noexcept
+	Cpu::Cpu(System& sys) :
+		_sys(sys),
+		_memory(sys.Memory)
 	{
 		this->Registers.ZeroRegisters();
-	}
-
-	void Cpu::Initialize(System* sys)
-	{
-		_sys = sys;
-		_memory = &(_sys->Memory);
-		Firmware.Initialize(_sys);
 		Registers.ZeroRegisters(true);
+		Firmware = std::make_unique<CpuFirmware>(sys);
 	}
 
 	void Cpu::EnableInterrupts()
