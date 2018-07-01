@@ -44,11 +44,14 @@ namespace sleepy
 		WORD ReadHL();
 
 		void SetFlag(FLAG flagMask);
+		void SetFlag(BYTE flagMask);
 		void ResetFlag(FLAG flagMask);
+		void ResetFlag(BYTE flagMask);
 		void InvertFlag(FLAG flagMask);
-
+		void InvertFlag(BYTE flagMask);
 		bool ReadFlag(FLAG flagMask);
-
+		bool ReadFlag(BYTE flagMask);
+		
 		void ResetAllFlags();
 
 		void ZeroRegisters(bool zero_PC_SP = false);

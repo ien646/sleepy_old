@@ -24,6 +24,11 @@ namespace sleepy
 	const WORD  WORD_MAX	= 0xFFFF;
 	const DWORD DWORD_MAX	= 0xFFFFFFFF;
 
+	const BYTE FLAG_ZERO	= 0x80;
+	const BYTE FLAG_SUB		= 0x40;	
+	const BYTE FLAG_HCARRY	= 0x20;
+	const BYTE FLAG_CARRY	= 0x10;
+
 	constexpr inline BYTE highByte(WORD val) 	
 	{ 
 		return (BYTE)(val >> 8); 

@@ -6,10 +6,6 @@
 
 namespace sleepy
 {
-	/* -- Forward declarations -- */
-	class System;
-	/* -------------------------- */
-
 	class CpuInstructionDef
 	{
 	public:

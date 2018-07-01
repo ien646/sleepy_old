@@ -2,17 +2,19 @@
 
 #include "Common.h"
 #include "CpuInstructionDef.h"
-#include "Registers.h"
-#include "Memory.h"
+#include "InstructionImpl.h"
 
 #include <string>
 #include <map>
 
-
 namespace sleepy
 {
+	// -- Forward declarations --
 	class System;
+	class Registers;
 	class Cpu;
+	class Memory;
+	// --------------------------
 
 	class CpuFirmware
 	{
@@ -24,8 +26,9 @@ namespace sleepy
 	private:
 		System& _sys;
 		Registers& _regs;
-		UPTR<Cpu>& _cpu;
-		UPTR<Memory>& _mem;
+		Cpu& _cpu;
+		Memory& _mem;
+		InstructionImpl _instImpl;
 
 		void InitInstructionMap();
 
@@ -68,26 +71,5 @@ namespace sleepy
 		void InitMap_RST();
 
 		void AddInstruction(OPCODE opc, const std::string& mnem, BYTE cycc, BYTE argl, const CpuInstructionDef::OP_CALL& call);
-
-		void Opcode_ADD_A_V8(BYTE v8);
-		void Opcode_ADD_HL_V16(WORD v16);
-		void Opcode_SUB_A_V8(BYTE v8);
-		void Opcode_ADC_A_V8(BYTE v8);
-		void Opcode_SBC_A_V8(BYTE v8);
-
-		void Opcode_AND_A_V8(BYTE v8);
-		void Opcode_OR_A_V8(BYTE v8);
-		void Opcode_XOR_A_V8(BYTE v8);
-		void Opcode_INC_R8(REG_8BIT& reg);
-		void Opcode_DEC_R8(REG_8BIT & reg);
-		void Opcode_CP_R8(BYTE reg);
-
-		void Opcode_RRCA();
-		void Opcode_RRA();
-		void Opcode_RLCA();
-		void Opcode_RLA();
-		void Opcode_CPL();
-		void Opcode_CCF();
-		void Opcode_DAA();
 	};
 }

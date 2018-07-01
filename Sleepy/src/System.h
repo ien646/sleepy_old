@@ -9,10 +9,9 @@ namespace sleepy
 	class System
 	{
 	public:
-		UPTR<Memory> Memory;
-		UPTR<Cpu> CPU;
+		Memory Memory;
+		Cpu CPU;
 
 		System() noexcept;
-		void Initialize();
 	};
 }

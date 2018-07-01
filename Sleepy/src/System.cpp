@@ -2,14 +2,8 @@
 
 namespace sleepy
 {
-	sleepy::System::System() noexcept
+	sleepy::System::System() noexcept : CPU(*this)		
 	{
 
-	}
-
-	void sleepy::System::Initialize()
-	{
-		this->CPU = std::make_unique<sleepy::Cpu>(*this);
-		this->Memory = std::make_unique<sleepy::Memory>();
 	}
 }

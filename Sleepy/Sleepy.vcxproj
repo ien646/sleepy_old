@@ -140,15 +140,16 @@
     <ClInclude Include="src\Cpu.h" />
     <ClInclude Include="src\CpuFirmware.h" />
     <ClInclude Include="src\CpuInstructionDef.h" />
+    <ClInclude Include="src\InstructionImpl.h" />
     <ClInclude Include="src\Memory.h" />
     <ClInclude Include="src\Registers.h" />
     <ClInclude Include="src\System.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Common.cpp" />
     <ClCompile Include="src\Cpu.cpp" />
     <ClCompile Include="src\CpuFirmware.cpp" />
     <ClCompile Include="src\CpuInstructionDef.cpp" />
+    <ClCompile Include="src\InstructionImpl.cpp" />
     <ClCompile Include="src\Memory.cpp" />
     <ClCompile Include="src\Registers.cpp" />
     <ClCompile Include="src\System.cpp" />

@@ -51,9 +51,19 @@ namespace sleepy
 		F |= (BYTE)flagMask;
 	}
 
+	void Registers::SetFlag(BYTE flagMask)
+	{
+		F |= flagMask;
+	}
+
 	void Registers::ResetFlag(FLAG flagMask)
 	{
 		F &= ((BYTE)flagMask ^ 0xFF);
+	}
+
+	void Registers::ResetFlag(BYTE flagMask)
+	{
+		F &= (flagMask ^ 0xFF);
 	}
 
 	void Registers::InvertFlag(FLAG flagMask)
@@ -61,9 +71,19 @@ namespace sleepy
 		F ^= (BYTE)flagMask;
 	}
 
+	void Registers::InvertFlag(BYTE flagMask)
+	{
+		F ^= flagMask;
+	}
+
 	bool Registers::ReadFlag(FLAG flagMask)
 	{
 		return ((BYTE)flagMask | F) == F;
+	}
+
+	bool Registers::ReadFlag(BYTE flagMask)
+	{
+		return (flagMask | F) == F;
 	}
 
 	void Registers::ResetAllFlags()

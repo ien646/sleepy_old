@@ -5,11 +5,11 @@ namespace sleepy
 {
 	Cpu::Cpu(System& sys) :
 		_sys(sys),
-		_memory(sys.Memory)
+		_memory(sys.Memory),
+		Firmware(sys)
 	{
 		this->Registers.ZeroRegisters();
 		Registers.ZeroRegisters(true);
-		Firmware = std::make_unique<CpuFirmware>(sys);
 	}
 
 	void Cpu::EnableInterrupts()
