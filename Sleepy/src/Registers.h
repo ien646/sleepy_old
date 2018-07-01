@@ -8,6 +8,8 @@ namespace sleepy
 	{
 	public:
 		Registers() noexcept {}
+		Registers(const Registers& copy_src) = default;
+		Registers(Registers&& move_src) = default;
 
 		enum class FLAG : BYTE
 		{

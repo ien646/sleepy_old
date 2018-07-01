@@ -13,5 +13,7 @@ namespace sleepy
 		Cpu CPU;
 
 		System() noexcept;
+		System(const System& copy_src) = delete;
+		System(System&& move_src) = default;
 	};
 }

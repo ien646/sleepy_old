@@ -22,6 +22,8 @@ namespace sleepy
 	public:
 		InstructionImpl() = delete;
 		InstructionImpl(System& sys);
+		InstructionImpl(const InstructionImpl& copy_src) = delete;
+		InstructionImpl(InstructionImpl&& move_src) = default;
 
 		void Opcode_ADD_A_V8(BYTE v8);
 		void Opcode_ADD_HL_V16(WORD v16);

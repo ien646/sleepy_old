@@ -11,6 +11,8 @@ namespace sleepy
 	{
 	public:
 		Memory() noexcept;
+		Memory(const Memory& copy_src) = delete;
+		Memory(Memory&& move_src) = delete;
 
 		void WriteByte(ADDR address, BYTE value);
 		void WriteWord(ADDR address, WORD value);

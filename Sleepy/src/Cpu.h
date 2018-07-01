@@ -17,7 +17,11 @@ namespace sleepy
 		Registers Registers;
 		CpuFirmware Firmware;
 
+		Cpu() = delete;
 		Cpu(System& sys);
+		Cpu(const Cpu& copy_src) = delete;
+		Cpu(Cpu&& move_src) = default;
+
 		void EnableInterrupts();
 		void DisableInterrupts();		
 
